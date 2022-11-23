@@ -1,0 +1,102 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net7.0-windows10.0.19041.0</TargetFramework>
+    <RootNamespace>Club_Organizer</RootNamespace>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+    <Platforms>AnyCPU;x64</Platforms>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>True</Optimize>
+    <FileAlignment>1024</FileAlignment>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Optimize>True</Optimize>
+    <FileAlignment>1024</FileAlignment>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <FileAlignment>1024</FileAlignment>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <FileAlignment>1024</FileAlignment>
+    <DebugType>embedded</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Res\Avatar\dev.png" />
+    <None Remove="Res\Avatar\man.png" />
+    <None Remove="Res\Avatar\neutral.png" />
+    <None Remove="Res\Avatar\woman.png" />
+    <None Remove="Res\Background\backgroud.png" />
+    <None Remove="Res\Logo\ball.png" />
+    <None Remove="Res\Logo\logo.ico" />
+    <None Remove="Res\Logo\logo.png" />
+    <None Remove="Res\Logo\sport.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="logo.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MahApps.Metro" Version="2.4.9" />
+    <PackageReference Include="MaterialDesignColors" Version="2.0.9" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.6.1" />
+    <PackageReference Include="MaterialDesignThemes.MahApps" Version="0.2.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\..\..\..\Документы\System.Data.SQLite.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Res\Avatar\dev.png" />
+    <Resource Include="Res\Avatar\man.png" />
+    <Resource Include="Res\Avatar\neutral.png" />
+    <Resource Include="Res\Avatar\woman.png" />
+    <Resource Include="Res\Background\backgroud.png" />
+    <Resource Include="Res\Logo\ball.png" />
+    <Resource Include="Res\Logo\logo.ico" />
+    <Resource Include="Res\Logo\logo.png" />
+    <Resource Include="Res\Logo\sport.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="DB\clients.db">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="DB\services.db">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+    <None Update="msvcr100.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="SQLite.Interop.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\Contracts\Class\" />
+    <Folder Include="Pages\Contracts\Frames\Class\" />
+    <Folder Include="Pages\Main\Class\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+</Project>

@@ -75,12 +75,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="DB\clients.db">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
-    <None Update="DB\services.db">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
     <None Update="msvcr100.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

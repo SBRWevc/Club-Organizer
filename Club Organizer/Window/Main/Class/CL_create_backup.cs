@@ -71,5 +71,22 @@ namespace Club_Organizer.Window.Main.Class
 				File.Copy(path_old + @"\users.db", path_new + @"\users.db", true);
 			}
 		}
+
+		// Создание бэкапа договоров \\
+		public static void create_backup_contracts()
+		{
+			string doc = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+			string path_new = doc + @"\Ладога\Backup";
+
+			string? currentPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+			string path_old = currentPath + @"\DB";
+
+			// Пользователи \\
+			FileInfo users = new FileInfo(path_old + @"\contracts.db");
+			if (users.Exists)
+			{
+				File.Copy(path_old + @"\contracts.db", path_new + @"\contracts.db", true);
+			}
+		}
 	}
 }

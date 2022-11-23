@@ -206,9 +206,8 @@
 					</DataTemplate>
 				</Button.ContentTemplate>
 			</Button>
-			<Menu x:Name="reports_menu"
-				  Margin="0.5 0"
-				  Padding="0"/>
+			<Separator x:Name="reports_separator"
+					   Margin="0.5 0"/>
 			<Button x:Name="reports_page"
 					Content="Отчёты"
 					Click="reports_page_Click">

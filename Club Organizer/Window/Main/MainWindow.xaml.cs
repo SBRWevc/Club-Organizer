@@ -32,7 +32,7 @@ namespace Club_Organizer
 			contracts_page.Visibility = Visibility.Collapsed;
 			clients_menu.Visibility = Visibility.Collapsed;
 			clients_page.Visibility = Visibility.Collapsed;
-			reports_menu.Visibility = Visibility.Collapsed;
+			reports_separator.Visibility = Visibility.Collapsed;
 			reports_page.Visibility = Visibility.Collapsed;
 			profile_menu.Visibility = Visibility.Collapsed;
 			profile.Visibility = Visibility.Collapsed;
@@ -57,7 +57,7 @@ namespace Club_Organizer
 			main.contracts_page.Visibility = Visibility.Visible;
 			main.clients_menu.Visibility = Visibility.Visible;
 			main.clients_page.Visibility = Visibility.Visible;
-			main.reports_menu.Visibility = Visibility.Visible;
+			main.reports_separator.Visibility = Visibility.Visible;
 			main.reports_page.Visibility = Visibility.Visible;
 			main.profile_menu.Visibility = Visibility.Visible;
 			main.profile.Visibility = Visibility.Visible;
@@ -303,6 +303,13 @@ namespace Club_Organizer
 
 			frame_main.Navigate(new PG_users());
 		}
+		// Восстановление бэкапа \\
+		private void recover_Click(object sender, RoutedEventArgs e)
+		{
+			CL_recover.recover_services();
+			CL_recover.recover_clients();
+			CL_recover.recover_users();
+		}
 		// Выход из учётной записи \\
 		private void exit_Click(object sender, RoutedEventArgs e)
 		{
@@ -316,7 +323,7 @@ namespace Club_Organizer
 			contracts_page.Visibility = Visibility.Collapsed;
 			clients_menu.Visibility = Visibility.Collapsed;
 			clients_page.Visibility = Visibility.Collapsed;
-			reports_menu.Visibility = Visibility.Collapsed;
+			reports_separator.Visibility = Visibility.Collapsed;
 			reports_page.Visibility = Visibility.Collapsed;
 			profile_menu.Visibility = Visibility.Collapsed;
 			profile.Visibility = Visibility.Collapsed;
@@ -324,13 +331,6 @@ namespace Club_Organizer
 			frame_main.Navigate(new PG_auth());
 
 			CL_userdata.clerdatauser();
-		}
-		// Восстановление бэкапа \\
-		private void recover_Click(object sender, RoutedEventArgs e)
-		{
-			CL_recover.recover_services();
-			CL_recover.recover_clients();
-			CL_recover.recover_users();
 		}
 
 
@@ -341,6 +341,7 @@ namespace Club_Organizer
 			CL_create_users_db.create_db();
 			CL_create_clients_db.create_db();
 			CL_create_services_db.create_db();
+			CL_create_contracts_db.create_db();
 		}
 		// Бэкапы \\
 		private void MetroWindow_Closed(object sender, EventArgs e)
@@ -349,6 +350,7 @@ namespace Club_Organizer
 			CL_create_backup.create_backup_services();
 			CL_create_backup.create_backup_clients();
 			CL_create_backup.create_backup_users();
+			CL_create_backup.create_backup_contracts();
 		}
 	}
 }

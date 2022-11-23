@@ -1,4 +1,7 @@
-﻿using Club_Organizer.Pages.Contracts.Frames.Tennis;
+﻿using Club_Organizer.Pages.Contracts.Class;
+using Club_Organizer.Pages.Contracts.Frames.Tennis;
+using System.Data;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -7,11 +10,19 @@ namespace Club_Organizer.Pages.Contracts
 {
 	public partial class PG_contracts : Page
 	{
+		static string db_path = Path.GetDirectoryName(System.Reflection.
+			Assembly.GetExecutingAssembly().Location) + @"\DB";
+
+		string conn = @"Data Source=" + db_path + "/contracts.db;Version=3;";
+		public static DataTable dt_contract = new DataTable();
+
 		public PG_contracts()
 		{
 			InitializeComponent();
+			data_update();
 		}
 
+		// Быстрые договоры \\
 		private async void Page_Loaded(object sender, RoutedEventArgs e)
 		{
 			if (MainWindow.fast_contract_tennis == true)
@@ -52,6 +63,16 @@ namespace Club_Organizer.Pages.Contracts
 			}
 		}
 
+		// Заполнение таблицы договоров \\
+		private void data_update()
+		{
+			dt_contract = new DataTable();
+			CL_contracts_info.get_info();
+			data_contract.ItemsSource = dt_contract.AsDataView();
+		}
+
+		// Кнопки \\
+		// Создание договора | Теннис \\
 		private void tennis_Click(object sender, RoutedEventArgs e)
 		{
 			add_contract_dialog.IsOpen = true;

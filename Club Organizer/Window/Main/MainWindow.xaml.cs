@@ -15,7 +15,10 @@ namespace Club_Organizer
 	{
 		public static string prof_login = "";
 		public static string prof_pass = "";
-		public static bool fast_contract;
+		public static bool fast_contract_tennis;
+		public static bool fast_contract_box;
+		public static bool fast_contract_gymnastic;
+		public static bool fast_contract_karate;
 
 		public MainWindow()
 		{
@@ -187,17 +190,63 @@ namespace Club_Organizer
 
 		// MenuItems \\
 		// Меню договоров \\
-		// Вызов окна создания нового договора \\
-		private void fastcontract_Click(object sender, RoutedEventArgs e)
+		// Вызов окна создания нового договора | Теннис \\
+		private void fastcontract_tennis_Click(object sender, RoutedEventArgs e)
 		{
 			if (profile_host.IsBottomDrawerOpen != false)
 			{
 				profile_host.IsBottomDrawerOpen = false;
 			}
 
-			fast_contract = true;
+			fast_contract_tennis = true;
+
+			fast_contract_box = false;
+			fast_contract_gymnastic = false;
+			fast_contract_karate = false;
 
 			frame_main.Navigate(new PG_contracts());
+		}
+		// Вызов окна создания нового договора | Бокс \\
+		private void fastcontract_box_Click(object sender, RoutedEventArgs e)
+		{
+			if (profile_host.IsBottomDrawerOpen != false)
+			{
+				profile_host.IsBottomDrawerOpen = false;
+			}
+
+			fast_contract_box = true;
+
+			fast_contract_tennis = false;
+			fast_contract_gymnastic = false;
+			fast_contract_karate = false;
+		}
+		// Вызов окна создания нового договора | Гимнастика \\
+		private void fastcontract_gymnastic_Click(object sender, RoutedEventArgs e)
+		{
+			if (profile_host.IsBottomDrawerOpen != false)
+			{
+				profile_host.IsBottomDrawerOpen = false;
+			}
+
+			fast_contract_gymnastic = true;
+
+			fast_contract_tennis = false;
+			fast_contract_box = false;
+			fast_contract_karate = false;
+		}
+		// Вызов окна создания нового договора | Карате \\
+		private void fastcontract_karate_Click(object sender, RoutedEventArgs e)
+		{
+			if (profile_host.IsBottomDrawerOpen != false)
+			{
+				profile_host.IsBottomDrawerOpen = false;
+			}
+
+			fast_contract_karate = true;
+
+			fast_contract_tennis = false;
+			fast_contract_box = false;
+			fast_contract_gymnastic = false;
 		}
 		// Страница договоров \\
 		private void contracts_page_Click(object sender, RoutedEventArgs e)
@@ -220,7 +269,7 @@ namespace Club_Organizer
 
 		// Меню клиентов \\
 		// Страница списка клиентов \\
-		private void MenuItem_Click(object sender, RoutedEventArgs e)
+		private void clients_list_Click(object sender, RoutedEventArgs e)
 		{
 			if (profile_host.IsBottomDrawerOpen != false)
 			{

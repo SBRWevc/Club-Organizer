@@ -91,7 +91,11 @@
 
   <ItemGroup>
     <Folder Include="Pages\Contracts\Class\" />
-    <Folder Include="Pages\Contracts\Frames\Class\" />
+    <Folder Include="Pages\Contracts\Frames\Box\" />
+    <Folder Include="Pages\Contracts\Frames\Karate\" />
+    <Folder Include="Pages\Contracts\Frames\Gymnastic\" />
+    <Folder Include="Pages\Contracts\Frames\Tennis\Class\" />
+    <Folder Include="Pages\Contracts\Frames\Tennis\Subframe\" />
     <Folder Include="Pages\Main\Class\" />
   </ItemGroup>
 

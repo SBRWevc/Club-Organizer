@@ -102,7 +102,8 @@
 												 BorderBrush="White"
 												 BorderThickness="0"
 												 PlacementMode="RightAndAlignTopEdges"
-												 ToolTip="Добавить услугу"
+												 ToolTip="Создать договор"
+												 ToolTipService.Placement="Bottom"
 												 Width="45"
 												 Height="45">
 							<materialDesign:PopupBox.ToggleCheckedContent>

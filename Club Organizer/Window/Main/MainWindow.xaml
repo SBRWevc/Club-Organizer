@@ -64,18 +64,55 @@
 				<MenuItem x:Name="contracts_menuitem"
 						  Margin="0"
 						  Padding="0">
-					<MenuItem Click="fastcontract_Click">
+					<MenuItem Click="fastcontract_tennis_Click">
 						<MenuItem.Header>
 							<StackPanel Orientation="Horizontal">
-								<materialDesign:PackIcon Kind="PaperAddOutline"
+								<materialDesign:PackIcon Kind="TennisRacket"
 														 Height="20"
 														 Width="20"/>
 								<TextBlock Margin="15 0 0 0"
 										   VerticalAlignment="Center"
-										   Text="Создать договор"/>
+										   Text="Создать договор | Теннис"/>
 							</StackPanel>
 						</MenuItem.Header>
 					</MenuItem>
+					<MenuItem Click="fastcontract_box_Click">
+						<MenuItem.Header>
+							<StackPanel Orientation="Horizontal">
+								<materialDesign:PackIcon Kind="BoxingGlove"
+														 Height="20"
+														 Width="20"/>
+								<TextBlock Margin="15 0 0 0"
+										   VerticalAlignment="Center"
+										   Text="Создать договор | Бокс"/>
+							</StackPanel>
+						</MenuItem.Header>
+					</MenuItem>
+					<MenuItem Click="fastcontract_gymnastic_Click">
+						<MenuItem.Header>
+							<StackPanel Orientation="Horizontal">
+								<materialDesign:PackIcon Kind="Gymnastics"
+														 Height="20"
+														 Width="20"/>
+								<TextBlock Margin="15 0 0 0"
+										   VerticalAlignment="Center"
+										   Text="Создать договор | Гимнастика"/>
+							</StackPanel>
+						</MenuItem.Header>
+					</MenuItem>
+					<MenuItem Click="fastcontract_karate_Click">
+						<MenuItem.Header>
+							<StackPanel Orientation="Horizontal">
+								<materialDesign:PackIcon Kind="Karate"
+														 Height="20"
+														 Width="20"/>
+								<TextBlock Margin="15 0 0 0"
+										   VerticalAlignment="Center"
+										   Text="Создать договор | Карате"/>
+							</StackPanel>
+						</MenuItem.Header>
+					</MenuItem>
+					<Separator/>
 					<MenuItem Click="contracts_page_Click">
 						<MenuItem.Header>
 							<StackPanel Orientation="Horizontal">
@@ -126,7 +163,7 @@
 				<MenuItem x:Name="clients_menuitem"
 						  Margin="0"
 						  Padding="0">
-					<MenuItem Click="MenuItem_Click">
+					<MenuItem Click="clients_list_Click">
 						<MenuItem.Header>
 							<StackPanel Orientation="Horizontal">
 								<materialDesign:PackIcon Kind="AccountsOutline"

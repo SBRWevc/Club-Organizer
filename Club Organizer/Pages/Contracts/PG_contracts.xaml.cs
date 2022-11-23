@@ -1,4 +1,4 @@
-﻿using Club_Organizer.Pages.Contracts.Frames;
+﻿using Club_Organizer.Pages.Contracts.Frames.Tennis;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,14 +14,41 @@ namespace Club_Organizer.Pages.Contracts
 
 		private async void Page_Loaded(object sender, RoutedEventArgs e)
 		{
-			if (MainWindow.fast_contract == true)
+			if (MainWindow.fast_contract_tennis == true)
 			{
 				frame_new_contract.Navigate(new FR_tennis());
 
 				await Task.Delay(100);
 
 				add_contract_dialog.IsOpen = true;
-				MainWindow.fast_contract = false;
+				MainWindow.fast_contract_tennis = false;
+			}
+			else if (MainWindow.fast_contract_box == true)
+			{
+				frame_new_contract.Navigate(new FR_tennis());
+
+				await Task.Delay(100);
+
+				add_contract_dialog.IsOpen = true;
+				MainWindow.fast_contract_box = false;
+			}
+			else if (MainWindow.fast_contract_gymnastic == true)
+			{
+				frame_new_contract.Navigate(new FR_tennis());
+
+				await Task.Delay(100);
+
+				add_contract_dialog.IsOpen = true;
+				MainWindow.fast_contract_gymnastic = false;
+			}
+			else if (MainWindow.fast_contract_karate == true)
+			{
+				frame_new_contract.Navigate(new FR_tennis());
+
+				await Task.Delay(100);
+
+				add_contract_dialog.IsOpen = true;
+				MainWindow.fast_contract_karate = false;
 			}
 		}
 

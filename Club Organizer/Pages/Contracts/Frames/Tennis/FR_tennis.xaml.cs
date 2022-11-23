@@ -13,15 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Club_Organizer.Pages.Contracts.Frames
+namespace Club_Organizer.Pages.Contracts.Frames.Tennis
 {
+    /// <summary>
+    /// Логика взаимодействия для FR_tennis.xaml
+    /// </summary>
     public partial class FR_tennis : Page
     {
-        public static bool close;
-
         public FR_tennis()
         {
             InitializeComponent();
         }
-	}
+    }
 }

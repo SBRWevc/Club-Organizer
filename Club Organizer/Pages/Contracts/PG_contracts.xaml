@@ -60,7 +60,7 @@
 					<Grid.RowDefinitions>
 						<RowDefinition Height="43"/>
 						<RowDefinition/>
-						<RowDefinition Height="50"/>
+						<RowDefinition Height="70"/>
 					</Grid.RowDefinitions>
 					<TextBlock Text="Договоры"
 							   Grid.Row="0"
@@ -148,11 +148,41 @@
 							</StackPanel>
 						</materialDesign:PopupBox>
 					</StackPanel>
+					<StackPanel Orientation="Horizontal"
+								Grid.Row="2"
+								VerticalAlignment="Bottom"
+								HorizontalAlignment="Left"
+								Margin="0 0 0 10">
+						<ComboBox x:Name="client_list"
+								  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+								  materialDesign:HintAssist.Hint="Поиск существующего клиента"
+								  Background="White"
+								  materialDesign:HintAssist.Background="White"
+								  ItemsSource="{Binding}"
+								  IsEditable="True"
+								  Width="550"/>
+						<Button x:Name="client_search"
+								Grid.Row="2"
+								VerticalAlignment="Center"
+								HorizontalAlignment="Left"
+								Background="White"
+								BorderThickness="0"
+								Style="{StaticResource MaterialDesignPaperButton}"
+								materialDesign:ElevationAssist.Elevation="Dp0"
+								materialDesign:ButtonAssist.CornerRadius="10"
+								Content="{materialDesign:PackIcon Kind=Search, Size=28}"
+								ToolTip="Поиск услуг по клиенту"
+								ToolTipService.Placement="Bottom"
+								Padding="0"
+								Width="48"
+								Height="48"
+								Margin="20 0 0 0"/>
+					</StackPanel>
 					<Button x:Name="contracts_update"
 							Grid.Row="3"
 							VerticalAlignment="Bottom"
 							HorizontalAlignment="Right"
-							Margin="20 5 0 10"
+							Margin="20 5 5 20"
 							Background="White"
 							BorderBrush="White"
 							Style="{StaticResource MaterialDesignPaperButton}" 
@@ -168,7 +198,7 @@
 							Grid.Row="3"
 							VerticalAlignment="Bottom"
 							HorizontalAlignment="Right"
-							Margin="20 5 40 10"
+							Margin="20 5 45 20"
 							Background="White"
 							BorderBrush="White"
 							Style="{StaticResource MaterialDesignPaperButton}" 
@@ -184,7 +214,7 @@
 							Grid.Row="3"
 							VerticalAlignment="Bottom"
 							HorizontalAlignment="Right"
-							Margin="20 5 80 10"		
+							Margin="20 5 85 20"		
 							Background="White"
 							BorderBrush="White"
 							Style="{StaticResource MaterialDesignPaperButton}" 
@@ -200,7 +230,7 @@
 							Grid.Row="3"
 							VerticalAlignment="Bottom"
 							HorizontalAlignment="Right"
-							Margin="20 5 120 10"	
+							Margin="20 5 125 20"	
 							Background="White"
 							BorderBrush="White"
 							Style="{StaticResource MaterialDesignPaperButton}" 

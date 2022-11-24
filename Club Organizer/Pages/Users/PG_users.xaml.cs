@@ -112,8 +112,8 @@ namespace Club_Organizer.Pages.Users
 			name_text = name.Text.Trim();
 			secondname_text = secondname.Text.Trim();
 			position_text = position.Text.Trim();
-			login_text = login.Text.Trim();
-			pass_text = pass.Password.Trim();
+			login_text = login.Text.Trim().ToLower(); ;
+			pass_text = pass.Password.Trim().ToLower();
 
 			if (position_text == "Управляющий" || position_text == "Директор")
 			{

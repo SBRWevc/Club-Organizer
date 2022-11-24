@@ -14,10 +14,9 @@
 				CornerRadius="8"
 				Background="White">
 			<Grid>
-				<Grid Margin="20 0 20 50">
+				<Grid Margin="20 0 20 70">
 					<Grid.RowDefinitions>
 						<RowDefinition Height="43"/>
-						<RowDefinition Height="60"/>
 						<RowDefinition/>
 					</Grid.RowDefinitions>
 					<TextBlock Text="Услуги"
@@ -29,35 +28,6 @@
 							   FontSize="20"
 							   Foreground="Coral"
 							   Height="33"/>
-					<StackPanel Orientation="Horizontal"
-								Grid.Row="1"
-								VerticalAlignment="Center"
-								HorizontalAlignment="Center">
-						<ComboBox x:Name="client_list"
-								  Style="{StaticResource MaterialDesignOutlinedComboBox}"
-								  materialDesign:HintAssist.Hint="Поиск существующего клиента"
-								  Background="White"
-								  materialDesign:HintAssist.Background="White"
-								  ItemsSource="{Binding}"
-								  IsEditable="True"
-								  Width="550"/>
-						<Button x:Name="client_search"
-								Grid.Row="2"
-								VerticalAlignment="Center"
-								HorizontalAlignment="Left"
-								Background="White"
-								BorderThickness="0"
-								Style="{StaticResource MaterialDesignPaperButton}"
-								materialDesign:ElevationAssist.Elevation="Dp0"
-								materialDesign:ButtonAssist.CornerRadius="10"
-								Content="{materialDesign:PackIcon Kind=Search, Size=28}"
-								ToolTip="Поиск услуг по клиенту"
-								ToolTipService.Placement="Bottom"
-								Padding="0"
-								Width="48"
-								Height="48"
-								Margin="20 0 0 0"/>
-					</StackPanel>
 					<StackPanel Grid.Row="3"
 								Margin="0 5 0 0">
 						<DataGrid x:Name="data_service"
@@ -87,10 +57,40 @@
 						</DataGrid>
 					</StackPanel>
 				</Grid>
+				<StackPanel Orientation="Horizontal"
+							Grid.Row="1"
+							VerticalAlignment="Bottom"
+							HorizontalAlignment="Left"
+							Margin="20 0 0 10">
+					<ComboBox x:Name="client_list"
+							  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+							  materialDesign:HintAssist.Hint="Поиск существующего клиента"
+							  Background="White"
+							  materialDesign:HintAssist.Background="White"
+							  ItemsSource="{Binding}"
+							  IsEditable="True"
+							  Width="550"/>
+					<Button x:Name="client_search"
+							Grid.Row="2"
+							VerticalAlignment="Center"
+							HorizontalAlignment="Left"
+							Background="White"
+							BorderThickness="0"
+							Style="{StaticResource MaterialDesignPaperButton}"
+							materialDesign:ElevationAssist.Elevation="Dp0"
+							materialDesign:ButtonAssist.CornerRadius="10"
+							Content="{materialDesign:PackIcon Kind=Search, Size=28}"
+							ToolTip="Поиск услуг по клиенту"
+							ToolTipService.Placement="Bottom"
+							Padding="0"
+							Width="48"
+							Height="48"
+							Margin="20 0 0 0"/>
+				</StackPanel>
 				<Button x:Name="service_update"
 						VerticalAlignment="Bottom"
 						HorizontalAlignment="Right"
-						Margin="20 5 20 10"
+						Margin="20 0 25 20"
 						Background="White"
 						BorderBrush="White"
 						Style="{StaticResource MaterialDesignPaperButton}" 
@@ -104,7 +104,7 @@
 				<Button x:Name="service_check"
 						VerticalAlignment="Bottom"
 						HorizontalAlignment="Right"
-						Margin="20 5 60 10"
+						Margin="20 0 65 20"
 						Background="White"
 						BorderBrush="White"
 						Style="{StaticResource MaterialDesignPaperButton}" 
@@ -118,7 +118,7 @@
 				<Button x:Name="service_delete"
 						VerticalAlignment="Bottom"
 						HorizontalAlignment="Right"
-						Margin="20 5 100 10"				
+						Margin="20 0 105 20"				
 						Background="White"
 						BorderBrush="White"
 						Style="{StaticResource MaterialDesignPaperButton}" 

@@ -38,15 +38,35 @@
 								<RowDefinition Height="3"/>
 								<RowDefinition/>
 							</Grid.RowDefinitions>
-							<TextBlock Text="Создание нового пользователя"
-									   HorizontalAlignment="Left"
-									   VerticalAlignment="Center"
-									   Grid.Column="0"
-									   Grid.ColumnSpan="3"
-									   FontWeight="Bold"
-									   Foreground="Coral"
-									   FontSize="30"
-									   Margin="20 0 0 0"/>
+							<StackPanel Orientation="Horizontal"
+										HorizontalAlignment="Left"
+										VerticalAlignment="Center"
+										Margin="20 0 0 0"
+										Grid.ColumnSpan="3">
+								<TextBlock Text="Создание нового пользователя"
+										   Grid.Column="0"
+										   FontWeight="Bold"
+										   Foreground="Coral"
+										   FontSize="29"
+										   Margin="0 4 0 0"/>
+								<Path Grid.Column="1" 
+									  Data="M720,60 L720,150"
+									  Fill="#FFF4F4F5" 
+									  HorizontalAlignment="Center" 
+									  Height="45" 
+									  Grid.Row="2" 
+									  Stroke="Black" 
+									  Stretch="Fill" 
+									  VerticalAlignment="Center" 
+									  Width="1"
+									  Margin="10 0"/>
+								<TextBlock Text="Club Organizer"
+										   Grid.Column="0"
+										   FontWeight="Bold"
+										   Foreground="Black"
+										   FontSize="29"
+										   Margin="0 4 0 0"/>
+							</StackPanel>
 							<Button x:Name="dialog_close"									
 									Grid.Row="0"
 									Grid.Column="0"

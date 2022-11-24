@@ -1,6 +1,7 @@
 ﻿using Club_Organizer.Pages.Contracts.Class;
 using Club_Organizer.Pages.Contracts.Frames.Tennis;
 using System.Data;
+using System.Data.SQLite;
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
@@ -77,6 +78,41 @@ namespace Club_Organizer.Pages.Contracts
 		{
 			add_contract_dialog.IsOpen = true;
 			frame_new_contract.Navigate(new FR_tennis());
+		}
+		// Обновление данных таблицы договоров \\
+		private void contracts_check_Click(object sender, RoutedEventArgs e)
+		{
+			dt_contract = new DataTable();
+			data_update();
+		}
+		// Обновление данных договоров в таблице \\
+		private void contracts_update_Click(object sender, RoutedEventArgs e)
+		{
+			CL_contracts_info_update.update_info();
+			dt_contract = new DataTable();
+			data_update();
+		}
+		// Удаление записи договора из таблицы \\
+		private void contracts_delete_Click(object sender, RoutedEventArgs e)
+		{
+			if (data_contract.SelectedItem == null)
+			{
+				return;
+			}
+			else
+			{
+				DataRowView rowView = (DataRowView)data_contract.SelectedItem;
+				SQLiteConnection db_conn = new SQLiteConnection(conn);
+				db_conn.Open();
+				using (SQLiteCommand cmd = new SQLiteCommand("DELETE FROM " +
+					"contracts_data WHERE ID=" + rowView["ID"], db_conn))
+				{
+					cmd.ExecuteNonQuery();
+				}
+				db_conn.Close();
+				dt_contract = new DataTable();
+				data_update();
+			}
 		}
 	}
 }

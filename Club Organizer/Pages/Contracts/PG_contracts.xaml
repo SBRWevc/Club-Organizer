@@ -162,7 +162,8 @@
 							ToolTip="Обновить"
 							ToolTipService.Placement="Top"
 							Cursor="Hand"
-							Padding="6"/>
+							Padding="6"
+							Click="contracts_update_Click"/>
 					<Button x:Name="contracts_check"
 							Grid.Row="3"
 							VerticalAlignment="Bottom"
@@ -177,7 +178,8 @@
 							ToolTip="Сохранить"
 							ToolTipService.Placement="Top"
 							Cursor="Hand"
-							Padding="6"/>
+							Padding="6"
+							Click="contracts_check_Click"/>
 					<Button x:Name="contracts_delete"
 							Grid.Row="3"
 							VerticalAlignment="Bottom"
@@ -192,7 +194,8 @@
 							ToolTip="Удалить"
 							ToolTipService.Placement="Top"
 							Cursor="Hand"
-							Padding="6"/>
+							Padding="6"
+							Click="contracts_delete_Click"/>
 					<Button x:Name="contracts_print"
 							Grid.Row="3"
 							VerticalAlignment="Bottom"

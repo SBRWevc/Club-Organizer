@@ -39,7 +39,7 @@ namespace Club_Organizer.Pages.Clients
 		// Обновление данных клиентов в таблице \\
 		private void client_check_Click(object sender, RoutedEventArgs e)
 		{
-			CL_clients_info_update.update_clients_info();
+			CL_clients_info_update.update_info();
 			dt_client = new DataTable();
 			data_update();
 		}

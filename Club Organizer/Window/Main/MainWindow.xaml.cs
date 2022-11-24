@@ -2,6 +2,7 @@
 using Club_Organizer.Pages.Clients;
 using Club_Organizer.Pages.Contracts;
 using Club_Organizer.Pages.Main;
+using Club_Organizer.Pages.Services;
 using Club_Organizer.Pages.Users;
 using Club_Organizer.Window.Main.Class;
 using System;
@@ -265,6 +266,8 @@ namespace Club_Organizer
 			{
 				profile_host.IsBottomDrawerOpen = false;
 			}
+
+			frame_main.Navigate(new PG_services());
 		}
 
 		// Меню клиентов \\

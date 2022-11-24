@@ -25,7 +25,8 @@ namespace Club_Organizer.Window.Main.Class
 			"Email TEXT NOT NULL," +
 			"ДР TEXT NOT NULL," +
 			"Зарегестрирован TEXT NOT NULL," +
-			"Администратор TEXT NOT NULL);";
+			"Администратор TEXT NOT NULL," +
+			"ЧС TEXT NOT NULL);";
 
 		// Создание базы клиентов \\
 		public static void create_db()

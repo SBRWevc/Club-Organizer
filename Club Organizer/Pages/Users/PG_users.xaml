@@ -7,8 +7,8 @@
       mc:Ignorable="d" 
 	  FontFamily="Century Gothic"
 	  RenderOptions.BitmapScalingMode="HighQuality"
-      d:DesignHeight="1080" 
-	  d:DesignWidth="1920">
+      d:DesignHeight="900" 
+	  d:DesignWidth="1600">
 	<Grid>
 		<Border Margin="8"
 				CornerRadius="8"
@@ -30,7 +30,6 @@
 							  Background="Transparent">
 							<Grid.ColumnDefinitions>
 								<ColumnDefinition Width="1.2*"/>
-								<ColumnDefinition Width="3"/>
 								<ColumnDefinition/>
 							</Grid.ColumnDefinitions>
 							<Grid.RowDefinitions>
@@ -139,16 +138,6 @@
 									Margin="0 0 0 34"
 									Content="Сохранить"
 									Click="add_user_Click"/>
-							<Path Grid.Column="1" 
-								  Data="M720,60 L720,150"
-								  Fill="#FFF4F4F5" 
-								  HorizontalAlignment="Center" 
-								  Height="400" 
-								  Grid.Row="2" 
-								  Stroke="Black" 
-								  Stretch="Fill" 
-								  VerticalAlignment="Center" 
-								  Width="1"/>
 							<Grid Grid.Column="2"
 								  VerticalAlignment="Center"
 								  Margin="15 0 30 0"

@@ -21,7 +21,9 @@ namespace Club_Organizer.Pages.Contracts
 		{
 			InitializeComponent();
 			data_update();
+			drawer_close();
 		}
+
 
 		// Быстрые договоры \\
 		private async void Page_Loaded(object sender, RoutedEventArgs e)
@@ -30,7 +32,7 @@ namespace Club_Organizer.Pages.Contracts
 			{
 				frame_new_contract.Navigate(new FR_tennis());
 
-				await Task.Delay(100);
+				await Task.Delay(500);
 
 				add_contract_dialog.IsOpen = true;
 				MainWindow.fast_contract_tennis = false;
@@ -71,6 +73,21 @@ namespace Club_Organizer.Pages.Contracts
 			CL_contracts_info.get_info();
 			data_contract.ItemsSource = dt_contract.AsDataView();
 		}
+
+		// Обработчик закрытия Drawer \\
+		private async void drawer_close()
+		{
+			while (true)
+			{
+				await Task.Delay(1);
+				if (FR_tennis.close == true) 
+				{
+					add_contract_dialog.IsOpen = false;
+					FR_tennis.close = false;
+				}
+			}
+		}
+
 
 		// Кнопки \\
 		// Создание договора | Теннис \\

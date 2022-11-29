@@ -18,9 +18,9 @@ namespace Club_Organizer.Window.Main.Class
 			"Отдел TEXT NOT NULL," +
 			"Город TEXT NOT NULL," +
 			"Улица TEXT NOT NULL," +
-			"Дом INTEGER NOT NULL," +
+			"Дом TEXT NOT NULL," +
 			"Корпус TEXT NOT NULL," +
-			"Квартира INTEGER NOT NULL," +
+			"Квартира TEXT NOT NULL," +
 			"Телефон TEXT NOT NULL," +
 			"Email TEXT NOT NULL," +
 			"ДР TEXT NOT NULL," +

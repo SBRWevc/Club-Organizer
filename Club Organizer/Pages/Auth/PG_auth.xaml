@@ -17,7 +17,7 @@
 								   DialogBackground="Transparent" 
 								   IsTabStop="False">
 			<materialDesign:DialogHost.DialogContent>
-				<Border CornerRadius="20"
+				<Border CornerRadius="8"
 						Background="White">
 					<StackPanel Margin="15">
 						<materialDesign:PackIcon x:Name="dialog_content_icon"
@@ -124,7 +124,7 @@
 									 SnapsToDevicePixels="True"
 									 UseLayoutRounding="True"
 									 RenderOptions.ClearTypeHint="Enabled"
-									 Margin="10"/>
+									 Margin="10" KeyDown="auth_pass_KeyDown"/>
 						<Button x:Name="auth_enter"
 								Grid.Row="3"
 								HorizontalAlignment="Center"

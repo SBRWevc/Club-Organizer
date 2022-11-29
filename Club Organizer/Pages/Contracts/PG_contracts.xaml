@@ -30,31 +30,7 @@
 									   DialogBackground="Transparent"
 									   materialDesign:DialogMargin="50">
 				<materialDesign:DialogHost.DialogContent>
-					<Border CornerRadius="8" 
-							MinWidth="1600"
-							MinHeight="610"			
-							Background="White">
-						<Grid MinWidth="1600"
-							  MinHeight="610">
-							<Frame x:Name="frame_new_contract"/>
-							<Button x:Name="close_dialog"
-									VerticalAlignment="Top"
-									HorizontalAlignment="Right"
-									Background="White"
-									BorderThickness="0"
-									Style="{StaticResource MaterialDesignPaperButton}"
-									Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
-									materialDesign:ElevationAssist.Elevation="Dp0"
-									materialDesign:ButtonAssist.CornerRadius="20"
-									Content="{materialDesign:PackIcon Kind=Close, Size=23}"
-									ToolTip="Записать данные нового клиента"
-									ToolTipService.Placement="Bottom"
-									Padding="0"
-									Margin="0 15.75 12 0"
-									Width="30"
-									Height="30"/>
-						</Grid>
-					</Border>
+					<Frame x:Name="frame_new_contract"/>
 				</materialDesign:DialogHost.DialogContent>
 				<Grid Margin="20 0">
 					<Grid.RowDefinitions>

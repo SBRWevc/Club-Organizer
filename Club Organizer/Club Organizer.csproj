@@ -57,12 +57,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="System.Data.SQLite">
-      <HintPath>..\..\..\..\..\Документы\System.Data.SQLite.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <Resource Include="Res\Avatar\dev.png" />
     <Resource Include="Res\Avatar\man.png" />
     <Resource Include="Res\Avatar\neutral.png" />
@@ -88,14 +82,18 @@
     <Folder Include="Pages\Contracts\Frames\Box\" />
     <Folder Include="Pages\Contracts\Frames\Karate\" />
     <Folder Include="Pages\Contracts\Frames\Gymnastic\" />
-    <Folder Include="Pages\Contracts\Frames\Tennis\Class\" />
-    <Folder Include="Pages\Contracts\Frames\Tennis\Subframe\" />
     <Folder Include="Pages\Main\Class\" />
     <Folder Include="Pages\Services\Class\" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\..\..\..\Документы\System.Data.SQLite.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

@@ -17,545 +17,1624 @@
 		</ResourceDictionary>
 	</Page.Resources>
 	<Grid>
-		<Border CornerRadius="8"
-				Background="White">
-			<materialDesign:DialogHost x:Name="dialog_client_error"
-									   Grid.Column="1"
-									   Grid.Row="1"
-									   Placement="Center"
-									   DialogBackground="Transparent" 
-									   IsTabStop="False">
-				<materialDesign:DialogHost.DialogContent>
-					<Border CornerRadius="20"
-							Background="White">
-						<StackPanel Margin="15">
-							<materialDesign:PackIcon x:Name="dialog_content_icon"
-													 Kind="ErrorOutline"
-													 Width="40"
-													 Height="40"
-													 HorizontalAlignment="Center"
-													 Margin="10 5" 
-													 IsTabStop="False"/>
-							<TextBlock x:Name="error_text"
-									   Text="ошибка"
-									   FontSize="18"
-									   FontWeight="Bold"
-									   HorizontalAlignment="Center"
-									   Foreground="Black"
-									   Margin="10 5"/>
-						</StackPanel>
-					</Border>
-				</materialDesign:DialogHost.DialogContent>
-				<materialDesign:DialogHost x:Name="dialog_add_service"
-										   Placement="Center"
-										   HorizontalContentAlignment="Center"
-										   VerticalContentAlignment="Center"
-										   DialogTheme="Light" 
-										   CloseOnClickAway="True"
-										   DialogBackground="Transparent"
-										   materialDesign:DialogMargin="50"
-										   CornerRadius="20">
-					<materialDesign:DialogHost.DialogContent>
-						<Border CornerRadius="20"
-								Background="White">
-							<Grid Height="484"
-								  Width="1050">
-								<Frame x:Name="frame_service_info"/>
-								<Button x:Name="dialog_close"
-										Grid.Row="0"
-										VerticalAlignment="Top"
-										HorizontalAlignment="Right"
-										Margin="0 9 20 0"		
-										Background="White"
-										Foreground="Coral"
-										BorderBrush="White"
-										Style="{StaticResource MaterialDesignPaperButton}" 
-										Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
-										materialDesign:ElevationAssist.Elevation="Dp0"
-										materialDesign:ButtonAssist.CornerRadius="8"
-										Content="{materialDesign:PackIcon Kind=Close, Size=25}"
-										Cursor="Hand"
-										Padding="6"/>
-							</Grid>
-						</Border>
-					</materialDesign:DialogHost.DialogContent>
-					<Grid>
-						<Grid.ColumnDefinitions>
-							<ColumnDefinition Width="640"/>
-							<ColumnDefinition Width="3"/>
-							<ColumnDefinition Width="1.5*"/>
-						</Grid.ColumnDefinitions>
-						<Grid.RowDefinitions>
-							<RowDefinition Height="55"/>
-							<RowDefinition Height="3"/>
-							<RowDefinition/>
-						</Grid.RowDefinitions>
-						<StackPanel Orientation="Horizontal"
-									HorizontalAlignment="Left"
-									VerticalAlignment="Center"
-									Margin="20 0 0 0">
-							<TextBlock Text="Создание нового договора"
-									   Grid.Column="0"
-									   FontWeight="Bold"
-									   Foreground="Coral"
-									   FontSize="29"
-									   Margin="0 4 0 0"/>
-							<Path Grid.Column="1" 
-								  Data="M720,60 L720,150"
-								  Fill="#FFF4F4F5" 
-								  HorizontalAlignment="Center" 
-								  Height="45" 
-								  Grid.Row="2" 
-								  Stroke="Black" 
-								  Stretch="Fill" 
-								  VerticalAlignment="Center" 
-								  Width="1"
-								  Margin="10 0"/>
-							<TextBlock Text="Теннис"
-									   Grid.Column="0"
-									   FontWeight="Bold"
-									   Foreground="Black"
-									   FontSize="29"
-									   Margin="0 4 0 0"/>
-						</StackPanel>
-						<Path Data="M240,130 L345,130"
-							  Margin="20 0"
-							  Height="2" 
-							  Grid.Row="1" 
-							  Grid.ColumnSpan="3"
-							  Stroke="Black" 
-							  Stretch="Fill" 
-							  VerticalAlignment="center" 
-							  Width="1560"/>
-						<Grid Grid.Column="0"
-							  VerticalAlignment="Top"
-							  Grid.Row="2"
-							  Margin="20 10 20 0"
-							  Height="525">
-							<Grid.RowDefinitions>
-								<RowDefinition Height="32"/>
-								<RowDefinition Height="50"/>
-								<RowDefinition Height="20"/>
-								<RowDefinition Height="100"/>
-								<RowDefinition Height="100"/>
-								<RowDefinition Height="173"/>
-								<RowDefinition/>
-							</Grid.RowDefinitions>
-							<TextBlock Text="Данные клиента"
-									   HorizontalAlignment="Left"
-									   FontSize="20"
-									   Margin="0 0 0 10"/>
-							<ComboBox x:Name="search_client"
-									  VerticalAlignment="Center"
-									  HorizontalAlignment="Left"
-									  Grid.Row="1"
-									  Style="{StaticResource MaterialDesignOutlinedComboBox}"
-									  materialDesign:HintAssist.Hint="Поиск существующего клиента"
-									  Background="White"
-									  materialDesign:HintAssist.Background="White"
-									  ItemsSource="{Binding}"
-									  IsEditable="True"
-									  Width="427"/>
-							<Button x:Name="client_check"
-									Grid.Row="1"
-									VerticalAlignment="Center"
-									HorizontalAlignment="Left"
-									Background="White"
-									BorderThickness="0"
-									Style="{StaticResource MaterialDesignPaperButton}"
-									materialDesign:ElevationAssist.Elevation="Dp0"
-									materialDesign:ButtonAssist.CornerRadius="10"
-									Content="{materialDesign:PackIcon Kind=Check, Size=25}"
-									ToolTip="Заполнить данные о клиенте"
-									ToolTipService.Placement="Bottom"
-									Padding="0"
-									Width="48"
-									Height="48"
-									Margin="457 0 0 0"/>
-							<Button x:Name="client_clear"
-									Grid.Row="1"
-									VerticalAlignment="Center"
-									Background="White"
-									BorderThickness="0"
-									Style="{StaticResource MaterialDesignPaperButton}"
-									materialDesign:ElevationAssist.Elevation="Dp0"
-									materialDesign:ButtonAssist.CornerRadius="10"
-									Content="{materialDesign:PackIcon Kind=Cancel, Size=25}"
-									ToolTip="Очистить данные о клиенте"
-									ToolTipService.Placement="Bottom"
-									Padding="0"
-									Height="48"
-									Margin="505,0,47,0"/>
-							<Button x:Name="write_new_client"
-									Grid.Row="1"
-									VerticalAlignment="Center"
-									HorizontalAlignment="Right"
-									Background="White"
-									BorderThickness="0"
-									Style="{StaticResource MaterialDesignPaperButton}"
-									materialDesign:ElevationAssist.Elevation="Dp0"
-									materialDesign:ButtonAssist.CornerRadius="10"
-									Content="{materialDesign:PackIcon Kind=ContentSaveAddOutline, Size=25}"
-									ToolTip="Записать данные нового клиента"
-									ToolTipService.Placement="Bottom"
-									Padding="0"
-									Width="48"
-									Height="48"/>
-							<Path Data="M240,130 L345,130" 
-								  Margin="0 3 0 0"
-								  Height="2" 
-								  Grid.Row="2" 
-								  Stroke="Black" 
-								  Stretch="Fill" 
-								  VerticalAlignment="center" 
-								  Width="678"/>
-							<Border CornerRadius="4"
-									Grid.Row="3"
-									BorderBrush="Coral"
-									BorderThickness="1"
-									Margin="0 13 0 13">
-								<StackPanel Orientation="Horizontal"
-											HorizontalAlignment="Center"
-											VerticalAlignment="Center">
-									<TextBox x:Name="lastname"
-											 Background="White"
-											 materialDesign:HintAssist.Background="White"
-											 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-											 materialDesign:HintAssist.Hint="Фамилия"
-											 Width="176"
-											 Margin="0 10 25 10"/>
-									<TextBox x:Name="name"
-											 Background="White"
-											 materialDesign:HintAssist.Background="White"
-											 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-											 materialDesign:HintAssist.Hint="Имя"
-											 Width="176"
-											 Margin="0 10 25 10"/>
-									<TextBox x:Name="secondname"
-											 Background="White"
-											 materialDesign:HintAssist.Background="White"
-											 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-											 materialDesign:HintAssist.Hint="Отчество"
-											 Width="176"
-											 Margin="0 10 0 10"/>
-								</StackPanel>
-							</Border>
-							<TextBlock Text="ФИО"
-									   Grid.Row="3"
-									   Background="White"
-									   HorizontalAlignment="Left"
-									   VerticalAlignment="Top"
-									   FontStyle="Italic"
-									   Margin="10 5 10 0"
-									   Padding="5 0"/>
-							<Border CornerRadius="4"
-									Grid.Row="4"
-									BorderBrush="Coral"
-									BorderThickness="1"
-									Margin="0 13 0 13">
-								<StackPanel Orientation="Horizontal"
-											HorizontalAlignment="Center"
-											VerticalAlignment="Center">
-									<TextBox x:Name="passport_num"
-											 Background="White"
-											 materialDesign:HintAssist.Background="White"
-											 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-											 materialDesign:HintAssist.Hint="Серия и номер паспорта"
-											 Width="176"
-											 Margin="0 10 25 10"/>
-									<DatePicker x:Name="passport_date"
-												Background="White"
-												materialDesign:HintAssist.Background="White"
-												Style="{StaticResource MaterialDesignOutlinedDatePicker}"
-												materialDesign:HintAssist.Hint="Дата выдачи паспорта"
-												materialDesign:CalendarAssist.IsHeaderVisible="False"
-												materialDesign:CalendarAssist.Orientation="Horizontal"
-												Width="176"
-												Margin="0 10 25 10"/>
-									<TextBox x:Name="passport_who"
-											 Background="White"
-											 materialDesign:HintAssist.Background="White"
-											 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-											 materialDesign:HintAssist.Hint="Номер отдела"
-											 Width="176"
-											 Margin="0 10 0 10"/>
-								</StackPanel>
-							</Border>
-							<TextBlock Text="Паспортные данные"
-									   Grid.Row="4"
-									   Background="White"
-									   HorizontalAlignment="Left"
-									   VerticalAlignment="Top"
-									   FontStyle="Italic"
-									   Margin="10 5 10 0"
-									   Padding="5 0"/>
-							<Border CornerRadius="4"
-									Grid.Row="5"
-									BorderBrush="Coral"
-									BorderThickness="1"
-									Margin="0 13 0 13">
-								<StackPanel Margin="0 5 0 0">
-									<StackPanel Orientation="Horizontal"
-												HorizontalAlignment="Center"
-												VerticalAlignment="Center"
-												Width="578">
-										<TextBox x:Name="city"
-												 Background="White"
-												 materialDesign:HintAssist.Background="White"
-												 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-												 materialDesign:HintAssist.Hint="Город"
-												 Width="126"
-												 Margin="0 10 25 10"/>
-										<TextBox x:Name="street"
-												 Background="White"
-												 materialDesign:HintAssist.Background="White"
-												 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-												 materialDesign:HintAssist.Hint="Улица"
-												 Width="126"
-												 Margin="0 10 25 10"/>
-										<TextBox x:Name="house"
-												 Background="White"
-												 materialDesign:HintAssist.Background="White"
-												 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-												 materialDesign:HintAssist.Hint="Дом"
-												 Width="60"
-												 Margin="0 10 25 10"/>
-										<TextBox x:Name="subhouse"
-												 Background="White"
-												 materialDesign:HintAssist.Background="White"
-												 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-												 materialDesign:HintAssist.Hint="Корпус"
-												 Width="75"
-												 Margin="0 10 25 10"/>
-										<TextBox x:Name="flat"
-												 Background="White"
-												 materialDesign:HintAssist.Background="White"
-												 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-												 materialDesign:HintAssist.Hint="Квартира"
-												 Width="90"
-												 Margin="0 10 0 10"/>
-									</StackPanel>
-									<StackPanel Orientation="Horizontal"
-												HorizontalAlignment="Center"
-												VerticalAlignment="Center">
-										<TextBox x:Name="phone"
-												 Background="White"
-												 materialDesign:HintAssist.Background="White"
-												 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-												 materialDesign:HintAssist.Hint="Номер телефона"
-												 Width="176"
-												 Margin="0 10 25 10"/>
-										<TextBox x:Name="email"
-												 Background="White"
-												 materialDesign:HintAssist.Background="White"
-												 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-												 materialDesign:HintAssist.Hint="Email"
-												 Width="176"
-												 Margin="0 10 25 10"/>
-										<DatePicker x:Name="birthday"
-													Background="White"
-													materialDesign:HintAssist.Background="White"
-													Style="{StaticResource MaterialDesignOutlinedDatePicker}"
-													materialDesign:HintAssist.Hint="День Рождения"
-													materialDesign:CalendarAssist.IsHeaderVisible="False"
-													materialDesign:CalendarAssist.Orientation="Horizontal"
-													Width="176"
-													Margin="0 10 0 10"/>
-									</StackPanel>
-								</StackPanel>
-							</Border>
-							<TextBlock Text="Контактные данные"
-									   Grid.Row="5"
-									   Background="White"
-									   HorizontalAlignment="Left"
-									   VerticalAlignment="Top"
-									   FontStyle="Italic"
-									   Margin="10 5 10 0"
-									   Padding="5 0"/>
-							<StackPanel Orientation="Horizontal"
-										Grid.Row="6"
-										HorizontalAlignment="Center">
-								<Button x:Name="contarct_save"
-										Background="White"
-										BorderBrush="Black"
-										BorderThickness="0 0 0 1"
-										Style="{StaticResource MaterialDesignPaperButton}"
-										materialDesign:ElevationAssist.Elevation="Dp0"
-										materialDesign:ButtonAssist.CornerRadius="0"
-										Padding="2 0"
-										Margin="0 0 20 5">
-									<Button.Content>
-										<StackPanel Orientation="Horizontal">
-											<materialDesign:PackIcon Kind="ContentSaveAddOutline"
-																	 Height="20"
-																	 Width="20"
-																	 Margin="0 0 5 0"/>
-											<TextBlock Text="Сохранить"
-													   Padding="0 2 0 0"/>
-										</StackPanel>
-									</Button.Content>
-								</Button>
-								<Button x:Name="contarct_print"
-										Background="White"
-										BorderBrush="Black"
-										BorderThickness="0 0 0 1"
-										Style="{StaticResource MaterialDesignPaperButton}"
-										materialDesign:ElevationAssist.Elevation="Dp0"
-										materialDesign:ButtonAssist.CornerRadius="0"
-										Padding="2 0"
-										Margin="0 0 20 5">
-									<Button.Content>
-										<StackPanel Orientation="Horizontal">
-											<materialDesign:PackIcon Kind="PrinterOutline"
-																	 Height="20"
-																	 Width="20"
-																	 Margin="0 0 5 0"/>
-											<TextBlock Text="Распечатать"
-													   Padding="0 2 0 0"/>
-										</StackPanel>
-									</Button.Content>
-								</Button>
-								<Button x:Name="contarct_open"
-										Background="White"
-										BorderBrush="Black"
-										BorderThickness="0 0 0 1"
-										Style="{StaticResource MaterialDesignPaperButton}"
-										materialDesign:ElevationAssist.Elevation="Dp0"
-										materialDesign:ButtonAssist.CornerRadius="0"
-										Padding="2 0"
-										Margin="0 0 0 5">
-									<Button.Content>
-										<StackPanel Orientation="Horizontal">
-											<materialDesign:PackIcon Kind="FileDocumentOutline"
-																	 Height="20"
-																	 Width="20"
-																	 Margin="0 0 5 0"/>
-											<TextBlock Text="Открыть в Word"
-													   Padding="0 2 0 0"/>
-										</StackPanel>
-									</Button.Content>
-								</Button>
-							</StackPanel>
-						</Grid>
+		<materialDesign:DialogHost x:Name="CT_error_dialog"
+								   Grid.Column="1"
+								   Grid.Row="1"
+								   Placement="Center"
+								   DialogBackground="Transparent" 
+								   CornerRadius="8"
+								   IsTabStop="False">
+			<materialDesign:DialogHost.DialogContent>
+				<Border CornerRadius="8"
+						Background="White">
+					<StackPanel Margin="15">
+						<materialDesign:PackIcon x:Name="dialog_content_icon"
+												 Kind="ErrorOutline"
+												 Width="40"
+												 Height="40"
+												 HorizontalAlignment="Center"
+												 Margin="10 5" 
+												 IsTabStop="False"/>
+						<TextBlock x:Name="error_text"
+								   Text="ошибка"
+								   FontSize="18"
+								   FontWeight="Bold"
+								   HorizontalAlignment="Center"
+								   Foreground="Black"
+								   Margin="10 5"/>
+					</StackPanel>
+				</Border>
+			</materialDesign:DialogHost.DialogContent>
+			<Border CornerRadius="8.8"
+					Background="White">
+				<Grid>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="680"/>
+						<ColumnDefinition Width="920"/>
+					</Grid.ColumnDefinitions>
+					<Grid.RowDefinitions>
+						<RowDefinition Height="55"/>
+						<RowDefinition Height="3"/>
+						<RowDefinition/>
+						<RowDefinition Height="70"/>
+					</Grid.RowDefinitions>
+					<StackPanel Orientation="Horizontal"
+								HorizontalAlignment="Left"
+								VerticalAlignment="Center"
+								Margin="20 0 0 0">
+						<TextBlock Text="Создание нового договора"
+								   Grid.Column="0"
+								   FontWeight="Bold"
+								   Foreground="Coral"
+								   FontSize="29"
+								   Margin="0 4 0 0"/>
 						<Path Grid.Column="1" 
 							  Data="M720,60 L720,150"
 							  Fill="#FFF4F4F5" 
 							  HorizontalAlignment="Center" 
-							  Height="525" 
+							  Height="45" 
 							  Grid.Row="2" 
 							  Stroke="Black" 
 							  Stretch="Fill" 
 							  VerticalAlignment="Center" 
-							  Width="1"/>
-						<Grid Margin="20 10 20 0"
-							  Grid.Row="2"
-							  Grid.Column="2"
-							  VerticalAlignment="Top"
-							  Height="525"
-							  Width="910">
-							<Grid.RowDefinitions>
-								<RowDefinition Height="32"/>
-								<RowDefinition/>
-								<RowDefinition Height="32"/>
-							</Grid.RowDefinitions>
-							<TextBlock Text="Услуги"
-									   HorizontalAlignment="Left"
-									   FontSize="20"
-									   Margin="0 0 0 10"/>
-							<StackPanel Grid.Row="1">
-								<DataGrid x:Name="data_services"
-										  Background="White"
-										  Style="{StaticResource MaterialDesignDataGrid}"
-										  HeadersVisibility="Column"
-										  ColumnHeaderHeight="62"
-										  ColumnWidth="1*"
-										  VerticalAlignment="Top"
-										  TextBlock.TextAlignment="Center"
-										  CanUserAddRows="False"
-										  CanUserDeleteRows="False"
-										  CanUserReorderColumns="False"
-										  CanUserResizeColumns="False"
-										  CanUserSortColumns="True"
-										  Foreground="Gray">
-									<DataGrid.Columns>
-										<DataGridCheckBoxColumn Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}"
-																ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}"
-																EditingElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnEditingStyle}"
-																Width="60"
-																CanUserSort="False">
-										</DataGridCheckBoxColumn>
-									</DataGrid.Columns>
-								</DataGrid>
-								<materialDesign:PopupBox Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}"
-														 materialDesign:ElevationAssist.Elevation="Dp0"
-														 HorizontalAlignment="Center"
-														 Foreground="Black"
-														 Background="White"
-														 BorderBrush="White"
-														 BorderThickness="0"
-														 PlacementMode="RightAndAlignTopEdges"
-														 ToolTip="Добавить услугу"
-														 Width="45"
-														 Height="45">
-									<materialDesign:PopupBox.ToggleCheckedContent>
-										<materialDesign:PackIcon Kind="Pencil"
-																 Width="20"
-																 Height="20" />
-									</materialDesign:PopupBox.ToggleCheckedContent>
-									<StackPanel>
-										<Button x:Name="one_time"
-												HorizontalAlignment="Left"
-												Background="White"
-												BorderThickness="0"
-												Style="{StaticResource MaterialDesignPaperButton}"
-												materialDesign:ElevationAssist.Elevation="Dp0"
-												Content="Разовое" 
-												Margin="5"/>
-										<Button x:Name="period"
-												HorizontalAlignment="Left"
-												Background="White"
-												BorderThickness="0"
-												Style="{StaticResource MaterialDesignPaperButton}"
-												materialDesign:ElevationAssist.Elevation="Dp0"
-												Content="Абонемент" 
-												Margin="5"/>
-									</StackPanel>
-								</materialDesign:PopupBox>
+							  Width="1"
+							  Margin="10 0"/>
+						<TextBlock Text="Теннис"
+								   Grid.Column="0"
+								   FontWeight="Bold"
+								   Foreground="Black"
+								   FontSize="29"
+								   Margin="0 4 0 0"/>
+					</StackPanel>
+					<Button x:Name="CT_close_drawer"
+							Grid.Column="1"
+							VerticalAlignment="Top"
+							HorizontalAlignment="Right"
+							Background="White"
+							BorderThickness="0"
+							Style="{StaticResource MaterialDesignPaperButton}"
+							materialDesign:ElevationAssist.Elevation="Dp0"
+							materialDesign:ButtonAssist.CornerRadius="20"
+							Content="{materialDesign:PackIcon Kind=Close, Size=23}"
+							ToolTip="Записать данные нового клиента"
+							ToolTipService.Placement="Bottom"
+							Padding="0"
+							Margin="0 15 13 0"
+							Width="30"
+							Height="30"
+							Click="CT_close_drawer_Click"/>
+					<Path Data="M240,130 L345,130"
+						  Margin="20 0"
+						  Height="2" 
+						  Grid.Row="1" 
+						  Grid.ColumnSpan="3"
+						  Stroke="Black" 
+						  Stretch="Fill" 
+						  VerticalAlignment="center" 
+						  Width="1560"/>
+					<Grid Grid.Column="0"
+						  VerticalAlignment="Top"
+						  Grid.Row="2"
+						  Margin="20 10 20 0"
+						  Height="465">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="32"/>
+							<RowDefinition Height="50"/>
+							<RowDefinition Height="20"/>
+							<RowDefinition Height="100"/>
+							<RowDefinition Height="100"/>
+							<RowDefinition Height="173"/>
+						</Grid.RowDefinitions>
+						<TextBlock Text="Данные клиента"
+								   HorizontalAlignment="Left"
+								   FontSize="20"
+								   Margin="0 0 0 10"/>
+						<ComboBox x:Name="CLT_search"
+								  VerticalAlignment="Center"
+								  HorizontalAlignment="Left"
+								  Grid.Row="1"
+								  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+								  materialDesign:HintAssist.Hint="Выбор существующего клиента"
+								  Background="White"
+								  materialDesign:HintAssist.Background="White"
+								  ItemsSource="{Binding}"
+								  IsEditable="True"
+								  Width="427" 
+								  Loaded="CLT_search_Loaded"/>
+						<Button x:Name="CLT_check"
+								Grid.Row="1"
+								VerticalAlignment="Center"
+								HorizontalAlignment="Left"
+								Background="White"
+								BorderThickness="0"
+								Style="{StaticResource MaterialDesignPaperButton}"
+								materialDesign:ElevationAssist.Elevation="Dp0"
+								materialDesign:ButtonAssist.CornerRadius="10"
+								Content="{materialDesign:PackIcon Kind=Search, Size=25}"
+								ToolTip="Найти данные о клиенте"
+								ToolTipService.Placement="Bottom"
+								Padding="0"
+								Width="48"
+								Height="48"
+								Margin="457 0 0 0"
+								Click="CLT_check_Click"/>
+						<Button x:Name="CLT_clear"
+								Grid.Row="1"
+								VerticalAlignment="Center"
+								Background="White"
+								BorderThickness="0"
+								Style="{StaticResource MaterialDesignPaperButton}"
+								materialDesign:ElevationAssist.Elevation="Dp0"
+								materialDesign:ButtonAssist.CornerRadius="10"
+								Content="{materialDesign:PackIcon Kind=Cancel, Size=25}"
+								ToolTip="Очистить данные о клиенте"
+								ToolTipService.Placement="Bottom"
+								Padding="0"
+								Height="48"
+								Margin="505,0,47,0"
+								Click="CLT_clear_Click"/>
+						<Button x:Name="CLT_write"
+								Grid.Row="1"
+								VerticalAlignment="Center"
+								HorizontalAlignment="Right"
+								Background="White"
+								BorderThickness="0"
+								Style="{StaticResource MaterialDesignPaperButton}"
+								materialDesign:ElevationAssist.Elevation="Dp0"
+								materialDesign:ButtonAssist.CornerRadius="10"
+								Content="{materialDesign:PackIcon Kind=ContentSaveAddOutline, Size=25}"
+								ToolTip="Записать данные нового клиента"
+								ToolTipService.Placement="Bottom"
+								Padding="0"
+								Width="48"
+								Height="48"
+								Click="CLT_write_Click"/>
+						<Path Data="M240,130 L345,130" 
+							  Margin="0 3 0 0"
+							  Height="2" 
+							  Grid.Row="2" 
+							  Stroke="Black" 
+							  Stretch="Fill" 
+							  VerticalAlignment="center" 
+							  Width="{Binding ElementName=left, Path=Width}"/>
+						<Border CornerRadius="4"
+								Grid.Row="3"
+								BorderBrush="Coral"
+								BorderThickness="1"
+								Margin="0 13 0 13">
+							<StackPanel Orientation="Horizontal"
+										HorizontalAlignment="Center"
+										VerticalAlignment="Center">
+								<TextBox x:Name="CLT_lastname"
+										 Background="White"
+										 materialDesign:HintAssist.Background="White"
+										 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+										 materialDesign:HintAssist.Hint="Фамилия"
+										 Width="189"
+										 Margin="0 10 25 10"/>
+								<TextBox x:Name="CLT_name"
+										 Background="White"
+										 materialDesign:HintAssist.Background="White"
+										 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+										 materialDesign:HintAssist.Hint="Имя"
+										 Width="189"
+										 Margin="0 10 25 10"/>
+								<TextBox x:Name="CLT_secondname"
+										 Background="White"
+										 materialDesign:HintAssist.Background="White"
+										 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+										 materialDesign:HintAssist.Hint="Отчество"
+										 Width="189"
+										 Margin="0 10 0 10"/>
 							</StackPanel>
-							<Button x:Name="sevices_update"
-									Grid.Row="2"
-									VerticalAlignment="Bottom"
-									HorizontalAlignment="Right"
-									Margin="20 0 0 0"
-									Background="White"
-									BorderBrush="White"
-									Style="{StaticResource MaterialDesignPaperButton}" 
-									materialDesign:ElevationAssist.Elevation="Dp0"
-									materialDesign:ButtonAssist.CornerRadius="8"
-									Content="{materialDesign:PackIcon Update, Size=20}"
-									ToolTip="Обновить"
-									ToolTipService.Placement="Top"
-									Cursor="Hand"
-									Padding="6"/>
-							<Button x:Name="services_delete"
-									Grid.Row="3"
-									VerticalAlignment="Bottom"
-									HorizontalAlignment="Right"
-									Margin="20 0 40 0"		
-									Background="White"
-									BorderBrush="White"
-									Style="{StaticResource MaterialDesignPaperButton}" 
-									materialDesign:ElevationAssist.Elevation="Dp0"
-									materialDesign:ButtonAssist.CornerRadius="8"
-									Content="{materialDesign:PackIcon DeleteOutline, Size=20}"
-									ToolTip="Удалить"
-									ToolTipService.Placement="Top"
-									Cursor="Hand"
-									Padding="6"/>
-						</Grid>
+						</Border>
+						<TextBlock Text="ФИО"
+								   Grid.Row="3"
+								   Background="White"
+								   HorizontalAlignment="Left"
+								   VerticalAlignment="Top"
+								   FontStyle="Italic"
+								   Margin="10 5 10 0"
+								   Padding="5 0"/>
+						<Border CornerRadius="4"
+								Grid.Row="4"
+								BorderBrush="Coral"
+								BorderThickness="1"
+								Margin="0 13 0 13">
+							<StackPanel Orientation="Horizontal"
+										HorizontalAlignment="Center"
+										VerticalAlignment="Center">
+								<TextBox x:Name="CLT_passport_num"
+										 Background="White"
+										 materialDesign:HintAssist.Background="White"
+										 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+										 materialDesign:HintAssist.Hint="Серия и номер паспорта"
+										 Width="189"
+										 Margin="0 10 25 10"/>
+								<DatePicker x:Name="CLT_passport_date"
+											Background="White"
+											materialDesign:HintAssist.Background="White"
+											Style="{StaticResource MaterialDesignOutlinedDatePicker}"
+											materialDesign:HintAssist.Hint="Дата выдачи паспорта"
+											materialDesign:CalendarAssist.IsHeaderVisible="True"
+											materialDesign:CalendarAssist.Orientation="Horizontal"
+											Width="189"
+											Margin="0 10 25 10"/>
+								<TextBox x:Name="CLT_passport_who"
+										 Background="White"
+										 materialDesign:HintAssist.Background="White"
+										 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+										 materialDesign:HintAssist.Hint="Номер отдела"
+										 Width="189"
+										 Margin="0 10 0 10"/>
+							</StackPanel>
+						</Border>
+						<TextBlock Text="Паспортные данные"
+								   Grid.Row="4"
+								   Background="White"
+								   HorizontalAlignment="Left"
+								   VerticalAlignment="Top"
+								   FontStyle="Italic"
+								   Margin="10 5 10 0"
+								   Padding="5 0"/>
+						<Border CornerRadius="4"
+								Grid.Row="5"
+								BorderBrush="Coral"
+								BorderThickness="1"
+								Margin="0 13 0 13">
+							<StackPanel Margin="0 5 0 0">
+								<StackPanel Orientation="Horizontal"
+											HorizontalAlignment="Center"
+											VerticalAlignment="Center">
+									<TextBox x:Name="CLT_city"
+											 Background="White"
+											 materialDesign:HintAssist.Background="White"
+											 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+											 materialDesign:HintAssist.Hint="Город"
+											 Width="126"
+											 Margin="0 10 25 10"/>
+									<TextBox x:Name="CLT_street"
+											 Background="White"
+											 materialDesign:HintAssist.Background="White"
+											 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+											 materialDesign:HintAssist.Hint="Улица"
+											 Width="126"
+											 Margin="0 10 25 10"/>
+									<TextBox x:Name="CLT_house"
+											 Background="White"
+											 materialDesign:HintAssist.Background="White"
+											 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+											 materialDesign:HintAssist.Hint="Дом"
+											 Width="73"
+											 Margin="0 10 25 10"
+											 PreviewTextInput="digital_PreviewTextInput"/>
+									<TextBox x:Name="CLT_subhouse"
+											 Background="White"
+											 materialDesign:HintAssist.Background="White"
+											 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+											 materialDesign:HintAssist.Hint="Корпус"
+											 Width="88"
+											 Margin="0 10 25 10"/>
+									<TextBox x:Name="CLT_flat"
+											 Background="White"
+											 materialDesign:HintAssist.Background="White"
+											 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+											 materialDesign:HintAssist.Hint="Квартира"
+											 Width="103"
+											 Margin="0 10 0 10"
+											 PreviewTextInput="digital_PreviewTextInput"/>
+								</StackPanel>
+								<StackPanel Orientation="Horizontal"
+											HorizontalAlignment="Center"
+											VerticalAlignment="Center">
+									<TextBox x:Name="CLT_phone"
+											 Background="White"
+											 materialDesign:HintAssist.Background="White"
+											 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+											 materialDesign:HintAssist.Hint="Номер телефона"
+											 Width="189"
+											 Margin="0 10 25 10"/>
+									<TextBox x:Name="CLT_email"
+											 Background="White"
+											 materialDesign:HintAssist.Background="White"
+											 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+											 materialDesign:HintAssist.Hint="Email"
+											 Width="189"
+											 Margin="0 10 25 10"/>
+									<DatePicker x:Name="CLT_birthday"
+												Background="White"
+												materialDesign:HintAssist.Background="White"
+												Style="{StaticResource MaterialDesignOutlinedDatePicker}"
+												materialDesign:HintAssist.Hint="День Рождения"
+												materialDesign:CalendarAssist.IsHeaderVisible="True"
+												materialDesign:CalendarAssist.Orientation="Horizontal"
+												Width="189"
+												Margin="0 10 0 10"/>
+								</StackPanel>
+							</StackPanel>
+						</Border>
+						<TextBlock Text="Контактные данные"
+								   Grid.Row="5"
+								   Background="White"
+								   HorizontalAlignment="Left"
+								   VerticalAlignment="Top"
+								   FontStyle="Italic"
+								   Margin="10 5 10 0"
+								   Padding="5 0"/>
+						
 					</Grid>
-				</materialDesign:DialogHost>
-			</materialDesign:DialogHost>
-		</Border>
+					<StackPanel Orientation="Horizontal"
+								Grid.Row="6"
+								Grid.ColumnSpan="3"
+								HorizontalAlignment="Center"
+								VerticalAlignment="Bottom"
+								Margin="0 0 0 20">
+						<Button x:Name="CT_save"
+									Background="White"
+									BorderBrush="Black"
+									BorderThickness="0 0 0 1"
+									Style="{StaticResource MaterialDesignPaperButton}"
+									materialDesign:ElevationAssist.Elevation="Dp0"
+									materialDesign:ButtonAssist.CornerRadius="0"
+									Padding="2 0"
+									Margin="0 0 20 5"
+									Click="CT_save_Click">
+							<Button.Content>
+								<StackPanel Orientation="Horizontal"
+												Margin="0 0 3 0">
+									<materialDesign:PackIcon Kind="ContentSaveAddOutline"
+																 Height="20"
+																 Width="20"
+																 Margin="0 0 5 0"/>
+									<TextBlock Text="Сохранить"
+												   Padding="0 2 0 0"/>
+								</StackPanel>
+							</Button.Content>
+						</Button>
+						<Button x:Name="CT_print"
+									Background="White"
+									BorderBrush="Black"
+									BorderThickness="0 0 0 1"
+									Style="{StaticResource MaterialDesignPaperButton}"
+									materialDesign:ElevationAssist.Elevation="Dp0"
+									materialDesign:ButtonAssist.CornerRadius="0"
+									Padding="2 0"
+									Margin="0 0 20 5"
+									Click="CT_print_Click">
+							<Button.Content>
+								<StackPanel Orientation="Horizontal"
+												Margin="0 0 3 0">
+									<materialDesign:PackIcon Kind="PrinterOutline"
+																 Height="20"
+																 Width="20"
+																 Margin="0 0 5 0"/>
+									<TextBlock Text="Распечатать"
+												   Padding="0 2 0 0"/>
+								</StackPanel>
+							</Button.Content>
+						</Button>
+						<Button x:Name="CT_open"
+									Background="White"
+									BorderBrush="Black"
+									BorderThickness="0 0 0 1"
+									Style="{StaticResource MaterialDesignPaperButton}"
+									materialDesign:ElevationAssist.Elevation="Dp0"
+									materialDesign:ButtonAssist.CornerRadius="0"
+									Padding="2 0"
+									Margin="0 0 0 5"
+									Click="CT_open_Click">
+							<Button.Content>
+								<StackPanel Orientation="Horizontal"
+												Margin="0 0 3 0">
+									<materialDesign:PackIcon Kind="FileDocumentOutline"
+																 Height="20"
+																 Width="20"
+																 Margin="0 0 5 0"/>
+									<TextBlock Text="Открыть в Word"
+												   Padding="0 2 0 0"/>
+								</StackPanel>
+							</Button.Content>
+						</Button>
+					</StackPanel>
+					<Grid Margin="20 10 20 0"
+						  Grid.Row="2"
+						  Grid.Column="2"
+						  VerticalAlignment="Top"
+						  Height="465">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="32"/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+						<TextBlock Text="Услуги"
+								   HorizontalAlignment="Left"
+								   FontSize="20"
+								   Margin="0 0 0 10"/>
+						<TabControl Grid.Row="1"
+									SelectionChanged="CT_TabControl_SelectionChanged">
+							<TabItem x:Name="OT"
+									 Header="Разовое">
+								<Grid>
+									<Grid.RowDefinitions>
+										<RowDefinition Height="14"/>
+										<RowDefinition/>
+									</Grid.RowDefinitions>
+									<Path Data="M240,130 L345,130" 
+										  Margin="0 3 0 0"
+										  Height="2" 
+										  Grid.Row="0" 
+										  Stroke="Black" 
+										  Stretch="Fill" 
+										  VerticalAlignment="Bottom" 
+										  Width="{Binding ElementName=right, Path=Width}"/>
+									<Grid Grid.Row="1"
+										  Margin="0 5 0 0">
+										<Grid.RowDefinitions>
+											<RowDefinition Height="100"/>
+											<RowDefinition Height="91"/>
+											<RowDefinition Height="91"/>
+											<RowDefinition/>
+										</Grid.RowDefinitions>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="467"/>
+											<ColumnDefinition/>
+										</Grid.ColumnDefinitions>
+										<Border CornerRadius="4"
+												Grid.Row="0"
+												BorderBrush="Coral"
+												BorderThickness="1"
+												Margin="0 16 0 13"
+												VerticalAlignment="Top"
+												HorizontalAlignment="Left"
+												Height="71">
+											<StackPanel Orientation="Horizontal"
+														HorizontalAlignment="Center"
+														VerticalAlignment="Center">
+												<DatePicker x:Name="OT_date"
+															Background="White"
+															materialDesign:HintAssist.Background="White"
+															Style="{StaticResource MaterialDesignOutlinedDatePicker}"
+															materialDesign:HintAssist.Hint="Дата занятия"
+															materialDesign:CalendarAssist.IsHeaderVisible="True"
+															materialDesign:CalendarAssist.Orientation="Horizontal"
+															Width="425"
+															Margin="10 10 10 10"/>
+											</StackPanel>
+										</Border>
+										<TextBlock Text="Дата"
+												   Grid.Row="0"
+												   Background="White"
+												   HorizontalAlignment="Left"
+												   VerticalAlignment="Top"
+												   FontStyle="Italic"
+												   Margin="10 8 10 0"
+												   Padding="5 0"/>
+										<Border CornerRadius="4"
+												Grid.Row="1"
+												BorderBrush="Coral"
+												BorderThickness="1"
+												Margin="0 9 0 11"
+												VerticalAlignment="Top"
+												HorizontalAlignment="Left"
+												Height="71">
+											<StackPanel Orientation="Horizontal"
+														HorizontalAlignment="Center"
+														VerticalAlignment="Center">
+												<ComboBox x:Name="OT_time_hour"
+														  VerticalAlignment="Center"
+														  HorizontalAlignment="Left"
+														  materialDesign:HintAssist.Background="White"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  materialDesign:HintAssist.Hint="Час"
+														  Background="White"
+														  Width="87.5"
+														  Margin="10 10 25 10"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="07"/>
+													<TextBlock Text="08"/>
+													<TextBlock Text="09"/>
+													<TextBlock Text="10"/>
+													<TextBlock Text="11"/>
+													<TextBlock Text="12"/>
+													<TextBlock Text="13"/>
+													<TextBlock Text="14"/>
+													<TextBlock Text="15"/>
+													<TextBlock Text="16"/>
+													<TextBlock Text="17"/>
+													<TextBlock Text="18"/>
+													<TextBlock Text="19"/>
+													<TextBlock Text="20"/>
+													<TextBlock Text="21"/>
+													<TextBlock Text="22"/>
+													<TextBlock Text="23"/>
+												</ComboBox>
+												<ComboBox x:Name="OT_time_min"
+														  VerticalAlignment="Center"
+														  HorizontalAlignment="Left"
+														  materialDesign:HintAssist.Background="White"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  materialDesign:HintAssist.Hint="Мин"
+														  Background="White"
+														  Width="87.5"
+														  Margin="0 10 25 10"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="00"/>
+													<TextBlock Text="30"/>
+												</ComboBox>
+												<TextBox x:Name="OT_total_hour"
+														 VerticalAlignment="Center"
+														 HorizontalAlignment="Left"
+														 materialDesign:HintAssist.Background="White"
+														 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+														 materialDesign:HintAssist.Hint="Время занятия"
+														 Background="White"
+														 Width="200"
+														 Margin="0 10 10 10" 
+														 PreviewTextInput="digital_PreviewTextInput"/>
+											</StackPanel>
+										</Border>
+										<TextBlock Text="Время"
+												   Grid.Row="1"
+												   Background="White"
+												   HorizontalAlignment="Left"
+												   VerticalAlignment="Top"
+												   FontStyle="Italic"
+												   Margin="10 0 10 0"
+												   Padding="5 0"/>
+										<Border CornerRadius="4"
+												Grid.Row="2"
+												BorderBrush="Coral"
+												BorderThickness="1"
+												Margin="0 9 0 11"
+												VerticalAlignment="Top"
+												HorizontalAlignment="Left"
+												Height="71">
+											<ComboBox x:Name="OT_court"
+													  VerticalAlignment="Center"
+													  HorizontalAlignment="Left"
+													  Grid.Row="1"
+													  materialDesign:HintAssist.Background="White"
+													  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+													  materialDesign:HintAssist.Hint="Выберите корт"
+													  Background="White"
+													  IsEditable="True"
+													  Width="425"
+													  Margin="10 10 10 10">
+												<TextBlock Text="Корт 1"/>
+												<TextBlock Text="Корт 2"/>
+												<TextBlock Text="Корт 3"/>
+												<TextBlock Text="Корт 4"/>
+											</ComboBox>
+										</Border>
+										<TextBlock Text="Предпочтительный корт"
+												   Grid.Row="2"
+												   Background="White"
+												   HorizontalAlignment="Left"
+												   VerticalAlignment="Top"
+												   FontStyle="Italic"
+												   Margin="10 0 10 0"
+												   Padding="5 0"/>
+										<Border CornerRadius="4"
+												Grid.Row="3"
+												BorderBrush="Coral"
+												BorderThickness="1"
+												Margin="0 10 0 0"
+												VerticalAlignment="Top"
+												HorizontalAlignment="Left"
+												Height="71">
+											<StackPanel Orientation="Horizontal"
+														HorizontalAlignment="Center"
+														VerticalAlignment="Center">
+												<TextBox x:Name="OT_price"
+														 VerticalAlignment="Center"
+														 HorizontalAlignment="Left"
+														 Grid.Row="1"
+														 materialDesign:HintAssist.Background="White"
+														 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+														 materialDesign:HintAssist.Hint="Цена за час"
+														 Background="White"
+														 Width="200"
+														 Margin="10 10 25 10"
+														 PreviewTextInput="digital_PreviewTextInput"/>
+												<TextBox x:Name="OT_sale"
+														 VerticalAlignment="Center"
+														 HorizontalAlignment="Left"
+														 Grid.Row="1"
+														 materialDesign:HintAssist.Background="White"
+														 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+														 materialDesign:HintAssist.Hint="Скидка %"
+														 Background="White"
+														 Width="200"
+														 Margin="0 10 10 10"
+														 PreviewTextInput="digital_PreviewTextInput"/>
+											</StackPanel>
+										</Border>
+										<TextBlock Text="Цена"
+												   Grid.Row="3"
+												   Background="White"
+												   HorizontalAlignment="Left"
+												   VerticalAlignment="Top"
+												   FontStyle="Italic"
+												   Margin="10 1 10 0"
+												   Padding="5 0"/>
+										<Grid Grid.Row="0"
+											  Grid.RowSpan="4"
+											  Grid.Column="2"
+											  Margin="20 13 0 0">
+											<Grid.RowDefinitions>
+												<RowDefinition/>
+												<RowDefinition Height="75"/>
+											</Grid.RowDefinitions>
+											<Grid>
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="180"/>
+													<ColumnDefinition/>
+												</Grid.ColumnDefinitions>
+												<StackPanel>
+													<TextBlock Text="Дата:"
+															   Margin="0 0 0 15"
+															   FontSize="16"/>
+													<TextBlock Text="Время начала:"
+															   Margin="0 0 0 5"
+															   FontSize="16"/>
+													<TextBlock Text="Всего часов:"
+															   Margin="0 0 0 15"
+															   FontSize="16"/>
+													<TextBlock Text="Корт:"
+															   Margin="0 0 0 15"
+															   FontSize="16"/>
+													<TextBlock Text="Цена:"
+															   Margin="0 0 0 5"
+															   FontSize="16"/>
+													<TextBlock Text="Скидка %:"
+															   Margin="0 0 0 15"
+															   FontSize="16"/>
+												</StackPanel>
+												<StackPanel Grid.Column="1"
+															HorizontalAlignment="Right">
+													<TextBlock Text="{Binding ElementName=OT_date, Path=Text}"
+															   FontSize="16"
+															   Margin="0 0 0 15"
+															   FontStyle="Italic"
+															   HorizontalAlignment="Right"/>
+													<TextBlock x:Name="OT_time_text"
+															   Margin="0 0 0 5"
+															   FontSize="16"
+															   FontStyle="Italic"
+															   HorizontalAlignment="Right"/>
+													<TextBlock Text="{Binding ElementName=OT_total_hour, Path=Text}"
+															   Margin="0 0 0 15"
+															   FontSize="16"
+															   FontStyle="Italic"
+															   HorizontalAlignment="Right"/>
+													<TextBlock Text="{Binding ElementName=OT_court, Path=Text}"
+															   Margin="0 0 0 15"
+															   FontSize="16"
+															   FontStyle="Italic"
+															   HorizontalAlignment="Right"/>
+													<TextBlock Text="{Binding ElementName=OT_price, Path=Text}"
+															   Margin="0 0 0 5"
+															   FontSize="16"
+															   FontStyle="Italic"
+															   HorizontalAlignment="Right"/>
+													<TextBlock Text="{Binding ElementName=OT_sale, Path=Text}"
+															   Margin="0 0 0 15"
+															   FontSize="16"
+															   FontStyle="Italic"
+															   HorizontalAlignment="Right"/>
+												</StackPanel>
+											</Grid>
+											<TextBlock Grid.Row="1"
+													   Text="Итого:"
+													   VerticalAlignment="Center"
+													   HorizontalAlignment="Left"
+													   FontWeight="Bold"
+													   FontSize="18"
+													   Foreground="Coral"/>
+											<TextBlock x:Name="OT_total_price"
+													   Grid.Row="1"
+													   VerticalAlignment="Center"
+													   HorizontalAlignment="Right"
+													   Text=""
+													   FontWeight="Bold"
+													   FontSize="18"
+													   FontStyle="Italic"
+													   Foreground="Coral"/>
+										</Grid>
+									</Grid>
+								</Grid>
+							</TabItem>
+							<TabItem x:Name="PR"
+									 Header="Абонемент">
+								<Grid>
+									<Grid.RowDefinitions>
+										<RowDefinition Height="14"/>
+										<RowDefinition/>
+									</Grid.RowDefinitions>
+									<Path Data="M240,130 L345,130" 
+										  Margin="0 3 0 0"
+										  Height="2" 
+										  Grid.Row="0" 
+										  Stroke="Black" 
+										  Stretch="Fill" 
+										  VerticalAlignment="Bottom" 
+										  Width="{Binding ElementName=right, Path=Width}"/>
+									<Grid Grid.Row="1"
+										  Margin="0 5 0 0">
+										<Grid.RowDefinitions>
+											<RowDefinition Height="100"/>
+											<RowDefinition Height="91"/>
+											<RowDefinition Height="91"/>
+											<RowDefinition/>
+										</Grid.RowDefinitions>
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="550"/>
+											<ColumnDefinition/>
+										</Grid.ColumnDefinitions>
+										<Border CornerRadius="4 4 0 4"
+												Grid.Row="0"
+												BorderBrush="Coral"
+												BorderThickness="1"
+												Margin="0 16 0 13"
+												VerticalAlignment="Top"
+												HorizontalAlignment="Left"
+												Height="71">
+											<StackPanel Orientation="Horizontal"
+														HorizontalAlignment="Center"
+														VerticalAlignment="Center">
+												<DatePicker x:Name="PR_date_start"
+															Background="White"
+															materialDesign:HintAssist.Background="White"
+															Style="{StaticResource MaterialDesignOutlinedDatePicker}"
+															materialDesign:HintAssist.Hint="Начало абонемента"
+															materialDesign:CalendarAssist.IsHeaderVisible="True"
+															materialDesign:CalendarAssist.Orientation="Horizontal"
+															Width="241.5"
+															Margin="10 10 25 10"/>
+												<DatePicker x:Name="PR_date_end"
+															Background="White"
+															materialDesign:HintAssist.Background="White"
+															Style="{StaticResource MaterialDesignOutlinedDatePicker}"
+															materialDesign:HintAssist.Hint="Конец абонемента"
+															materialDesign:CalendarAssist.IsHeaderVisible="True"
+															materialDesign:CalendarAssist.Orientation="Horizontal"
+															Width="241.5"
+															Margin="0 10 10 10"/>
+											</StackPanel>
+										</Border>
+										<TextBlock Text="Даты и время"
+												   Grid.Row="0"
+												   Background="White"
+												   HorizontalAlignment="Left"
+												   VerticalAlignment="Top"
+												   FontStyle="Italic"
+												   Margin="10 8 10 0"
+												   Padding="5 0"/>
+										<Border CornerRadius="4"
+												Grid.Row="1"
+												BorderBrush="Coral"
+												BorderThickness="1"
+												Margin="0 9 0 11"
+												VerticalAlignment="Top"
+												HorizontalAlignment="Left"
+												Height="71">
+											<ComboBox x:Name="PR_court"
+													  VerticalAlignment="Center"
+													  HorizontalAlignment="Left"
+													  Grid.Row="1"
+													  materialDesign:HintAssist.Background="White"
+													  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+													  materialDesign:HintAssist.Hint="Выберите корт"
+													  Background="White"
+													  IsEditable="True"
+													  Width="150"
+													  Margin="10 10 10 10">
+												<TextBlock Text="Корт 1"/>
+												<TextBlock Text="Корт 2"/>
+												<TextBlock Text="Корт 3"/>
+												<TextBlock Text="Корт 4"/>
+											</ComboBox>
+										</Border>
+										<Border CornerRadius="0 0 4 4"
+												Grid.Row="0"
+												Grid.RowSpan="4"
+												BorderThickness="1 0 1 1"
+												BorderBrush="Coral"
+												Background="White"
+												Margin="0,86,20,0"
+												VerticalAlignment="Top"
+												HorizontalAlignment="Right"
+												Height="277">
+											<Grid>
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="59"/>
+													<ColumnDefinition Width="3"/>
+													<ColumnDefinition/>
+													<ColumnDefinition/>
+													<ColumnDefinition Width="3"/>
+													<ColumnDefinition/>
+													<ColumnDefinition/>
+												</Grid.ColumnDefinitions>
+												<Grid.RowDefinitions>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+													<RowDefinition/>
+												</Grid.RowDefinitions>
+												<CheckBox x:Name="PR_monday"
+														  Content="ПН"
+														  Grid.Row="0"
+														  Margin="10"
+														  Click="PR_monday_Click"/>
+												<CheckBox x:Name="PR_tuesday"
+														  Content="ВТ"
+														  Grid.Row="1"
+														  Margin="10"
+														  Click="PR_tuesday_Click"/>
+												<CheckBox x:Name="PR_wednesday"
+														  Content="СР"
+														  Grid.Row="2"
+														  Margin="10"
+														  Click="PR_wednesday_Click"/>
+												<CheckBox x:Name="PR_thursday"
+														  Content="ЧТ"
+														  Grid.Row="3"
+														  Margin="10"
+														  Click="PR_thursday_Click"/>
+												<CheckBox x:Name="PR_friday"
+														  Content="ПТ"
+														  Grid.Row="4"
+														  Margin="10"
+														  Click="PR_friday_Click"/>
+												<CheckBox x:Name="PR_saturday"
+														  Content="СБ"
+														  Grid.Row="5"
+														  Margin="10"
+														  Click="PR_saturday_Click"/>
+												<CheckBox x:Name="PR_sunday"
+														  Content="ВС"
+														  Grid.Row="6"
+														  Margin="10"
+														  Click="PR_sunday_Click"/>
+												<Path Grid.Column="1" 
+													  Data="M720,60 L720,150"
+													  Fill="#FFF4F4F5" 
+													  HorizontalAlignment="Center" 
+													  Height="264.5" 
+													  Grid.Row="0" 
+													  Grid.RowSpan="7"
+													  Stroke="Coral" 
+													  Stretch="Fill" 
+													  VerticalAlignment="Center" 
+													  Width="1"/>
+												<ComboBox x:Name="PR_monday_start_hour"
+														  Grid.Row="0"
+														  Grid.Column="2"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  ToolTip="Время начала занятия"
+														  Width="50"
+														  Padding="5"
+														  Margin="10 0 5 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="7"/>
+													<TextBlock Text="8"/>
+													<TextBlock Text="9"/>
+													<TextBlock Text="10"/>
+													<TextBlock Text="11"/>
+													<TextBlock Text="12"/>
+													<TextBlock Text="13"/>
+													<TextBlock Text="14"/>
+													<TextBlock Text="15"/>
+													<TextBlock Text="16"/>
+													<TextBlock Text="17"/>
+													<TextBlock Text="18"/>
+													<TextBlock Text="19"/>
+													<TextBlock Text="20"/>
+													<TextBlock Text="21"/>
+													<TextBlock Text="22"/>
+													<TextBlock Text="23"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_tuesday_start_hour"
+														  Grid.Row="1"
+														  Grid.Column="2"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  ToolTip="Время начала занятия"
+														  Width="50"
+														  Padding="5"
+														  Margin="10 0 5 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="7"/>
+													<TextBlock Text="8"/>
+													<TextBlock Text="9"/>
+													<TextBlock Text="10"/>
+													<TextBlock Text="11"/>
+													<TextBlock Text="12"/>
+													<TextBlock Text="13"/>
+													<TextBlock Text="14"/>
+													<TextBlock Text="15"/>
+													<TextBlock Text="16"/>
+													<TextBlock Text="17"/>
+													<TextBlock Text="18"/>
+													<TextBlock Text="19"/>
+													<TextBlock Text="20"/>
+													<TextBlock Text="21"/>
+													<TextBlock Text="22"/>
+													<TextBlock Text="23"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_wednesday_start_hour"
+														  Grid.Row="2"
+														  Grid.Column="2"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  ToolTip="Время начала занятия"
+														  Width="50"
+														  Padding="5"
+														  Margin="10 0 5 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="7"/>
+													<TextBlock Text="8"/>
+													<TextBlock Text="9"/>
+													<TextBlock Text="10"/>
+													<TextBlock Text="11"/>
+													<TextBlock Text="12"/>
+													<TextBlock Text="13"/>
+													<TextBlock Text="14"/>
+													<TextBlock Text="15"/>
+													<TextBlock Text="16"/>
+													<TextBlock Text="17"/>
+													<TextBlock Text="18"/>
+													<TextBlock Text="19"/>
+													<TextBlock Text="20"/>
+													<TextBlock Text="21"/>
+													<TextBlock Text="22"/>
+													<TextBlock Text="23"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_thursday_start_hour"
+														  Grid.Row="3"
+														  Grid.Column="2"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  ToolTip="Время начала занятия"
+														  Width="50"
+														  Padding="5"
+														  Margin="10 0 5 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="7"/>
+													<TextBlock Text="8"/>
+													<TextBlock Text="9"/>
+													<TextBlock Text="10"/>
+													<TextBlock Text="11"/>
+													<TextBlock Text="12"/>
+													<TextBlock Text="13"/>
+													<TextBlock Text="14"/>
+													<TextBlock Text="15"/>
+													<TextBlock Text="16"/>
+													<TextBlock Text="17"/>
+													<TextBlock Text="18"/>
+													<TextBlock Text="19"/>
+													<TextBlock Text="20"/>
+													<TextBlock Text="21"/>
+													<TextBlock Text="22"/>
+													<TextBlock Text="23"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_friday_start_hour"
+														  Grid.Row="4"
+														  Grid.Column="2"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  ToolTip="Время начала занятия"
+														  Width="50"
+														  Padding="5"
+														  Margin="10 0 5 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="7"/>
+													<TextBlock Text="8"/>
+													<TextBlock Text="9"/>
+													<TextBlock Text="10"/>
+													<TextBlock Text="11"/>
+													<TextBlock Text="12"/>
+													<TextBlock Text="13"/>
+													<TextBlock Text="14"/>
+													<TextBlock Text="15"/>
+													<TextBlock Text="16"/>
+													<TextBlock Text="17"/>
+													<TextBlock Text="18"/>
+													<TextBlock Text="19"/>
+													<TextBlock Text="20"/>
+													<TextBlock Text="21"/>
+													<TextBlock Text="22"/>
+													<TextBlock Text="23"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_saturday_start_hour"
+														  Grid.Row="5"
+														  Grid.Column="2"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  ToolTip="Время начала занятия"
+														  Width="50"
+														  Padding="5"
+														  Margin="10 0 5 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="7"/>
+													<TextBlock Text="8"/>
+													<TextBlock Text="9"/>
+													<TextBlock Text="10"/>
+													<TextBlock Text="11"/>
+													<TextBlock Text="12"/>
+													<TextBlock Text="13"/>
+													<TextBlock Text="14"/>
+													<TextBlock Text="15"/>
+													<TextBlock Text="16"/>
+													<TextBlock Text="17"/>
+													<TextBlock Text="18"/>
+													<TextBlock Text="19"/>
+													<TextBlock Text="20"/>
+													<TextBlock Text="21"/>
+													<TextBlock Text="22"/>
+													<TextBlock Text="23"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_sunday_start_hour"
+														  Grid.Row="6"
+														  Grid.Column="2"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  ToolTip="Время начала занятия"
+														  Width="50"
+														  Padding="5"
+														  Margin="10 0 5 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="7"/>
+													<TextBlock Text="8"/>
+													<TextBlock Text="9"/>
+													<TextBlock Text="10"/>
+													<TextBlock Text="11"/>
+													<TextBlock Text="12"/>
+													<TextBlock Text="13"/>
+													<TextBlock Text="14"/>
+													<TextBlock Text="15"/>
+													<TextBlock Text="16"/>
+													<TextBlock Text="17"/>
+													<TextBlock Text="18"/>
+													<TextBlock Text="19"/>
+													<TextBlock Text="20"/>
+													<TextBlock Text="21"/>
+													<TextBlock Text="22"/>
+													<TextBlock Text="23"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_monday_start_min"
+														  Grid.Row="0"
+														  Grid.Column="3"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  Width="50"
+														  Padding="5"
+														  Margin="5 0 10 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="00"/>
+													<TextBlock Text="30"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_tuesday_start_min"
+														  Grid.Row="1"
+														  Grid.Column="3"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  Width="50"
+														  Padding="5"
+														  Margin="5 0 10 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="00"/>
+													<TextBlock Text="30"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_wednesday_start_min"
+														  Grid.Row="2"
+														  Grid.Column="3"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  Width="50"
+														  Padding="5"
+														  Margin="5 0 10 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="00"/>
+													<TextBlock Text="30"/>
+													</ComboBox>
+												<ComboBox x:Name="PR_thursday_start_min"
+														  Grid.Row="3"
+														  Grid.Column="3"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  Width="50"
+														  Padding="5"
+														  Margin="5 0 10 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="00"/>
+													<TextBlock Text="30"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_friday_start_min"
+														  Grid.Row="4"
+														  Grid.Column="3"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  Width="50"
+														  Padding="5"
+														  Margin="5 0 10 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="00"/>
+													<TextBlock Text="30"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_saturday_start_min"
+														  Grid.Row="5"
+														  Grid.Column="3"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  Width="50"
+														  Padding="5"
+														  Margin="5 0 10 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="00"/>
+													<TextBlock Text="30"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_sunday_start_min"
+														  Grid.Row="6"
+														  Grid.Column="3"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  Width="50"
+														  Padding="5"
+														  Margin="5 0 10 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="00"/>
+													<TextBlock Text="30"/>
+												</ComboBox>												
+												<Path Grid.Column="4" 
+													  Data="M720,60 L720,150"
+													  Fill="#FFF4F4F5" 
+													  HorizontalAlignment="Center" 
+													  Height="264.5" 
+													  Grid.Row="0" 
+													  Grid.RowSpan="7"
+													  Stroke="Coral" 
+													  Stretch="Fill" 
+													  VerticalAlignment="Center" 
+													  Width="1"/>
+												<ComboBox x:Name="PR_monday_end_hour"
+														  Grid.Row="0"
+														  Grid.Column="5"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  ToolTip="Время начала занятия"
+														  Width="50"
+														  Padding="5"
+														  Margin="10 0 5 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="7"/>
+													<TextBlock Text="8"/>
+													<TextBlock Text="9"/>
+													<TextBlock Text="10"/>
+													<TextBlock Text="11"/>
+													<TextBlock Text="12"/>
+													<TextBlock Text="13"/>
+													<TextBlock Text="14"/>
+													<TextBlock Text="15"/>
+													<TextBlock Text="16"/>
+													<TextBlock Text="17"/>
+													<TextBlock Text="18"/>
+													<TextBlock Text="19"/>
+													<TextBlock Text="20"/>
+													<TextBlock Text="21"/>
+													<TextBlock Text="22"/>
+													<TextBlock Text="23"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_tuesday_end_hour"
+														  Grid.Row="1"
+														  Grid.Column="5"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  ToolTip="Время начала занятия"
+														  Width="50"
+														  Padding="5"
+														  Margin="10 0 5 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="7"/>
+													<TextBlock Text="8"/>
+													<TextBlock Text="9"/>
+													<TextBlock Text="10"/>
+													<TextBlock Text="11"/>
+													<TextBlock Text="12"/>
+													<TextBlock Text="13"/>
+													<TextBlock Text="14"/>
+													<TextBlock Text="15"/>
+													<TextBlock Text="16"/>
+													<TextBlock Text="17"/>
+													<TextBlock Text="18"/>
+													<TextBlock Text="19"/>
+													<TextBlock Text="20"/>
+													<TextBlock Text="21"/>
+													<TextBlock Text="22"/>
+													<TextBlock Text="23"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_wednesday_end_hour"
+														  Grid.Row="2"
+														  Grid.Column="5"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  ToolTip="Время начала занятия"
+														  Width="50"
+														  Padding="5"
+														  Margin="10 0 5 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="7"/>
+													<TextBlock Text="8"/>
+													<TextBlock Text="9"/>
+													<TextBlock Text="10"/>
+													<TextBlock Text="11"/>
+													<TextBlock Text="12"/>
+													<TextBlock Text="13"/>
+													<TextBlock Text="14"/>
+													<TextBlock Text="15"/>
+													<TextBlock Text="16"/>
+													<TextBlock Text="17"/>
+													<TextBlock Text="18"/>
+													<TextBlock Text="19"/>
+													<TextBlock Text="20"/>
+													<TextBlock Text="21"/>
+													<TextBlock Text="22"/>
+													<TextBlock Text="23"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_thursday_end_hour"
+														  Grid.Row="3"
+														  Grid.Column="5"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  ToolTip="Время начала занятия"
+														  Width="50"
+														  Padding="5"
+														  Margin="10 0 5 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="7"/>
+													<TextBlock Text="8"/>
+													<TextBlock Text="9"/>
+													<TextBlock Text="10"/>
+													<TextBlock Text="11"/>
+													<TextBlock Text="12"/>
+													<TextBlock Text="13"/>
+													<TextBlock Text="14"/>
+													<TextBlock Text="15"/>
+													<TextBlock Text="16"/>
+													<TextBlock Text="17"/>
+													<TextBlock Text="18"/>
+													<TextBlock Text="19"/>
+													<TextBlock Text="20"/>
+													<TextBlock Text="21"/>
+													<TextBlock Text="22"/>
+													<TextBlock Text="23"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_friday_end_hour"
+														  Grid.Row="4"
+														  Grid.Column="5"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  ToolTip="Время начала занятия"
+														  Width="50"
+														  Padding="5"
+														  Margin="10 0 5 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="7"/>
+													<TextBlock Text="8"/>
+													<TextBlock Text="9"/>
+													<TextBlock Text="10"/>
+													<TextBlock Text="11"/>
+													<TextBlock Text="12"/>
+													<TextBlock Text="13"/>
+													<TextBlock Text="14"/>
+													<TextBlock Text="15"/>
+													<TextBlock Text="16"/>
+													<TextBlock Text="17"/>
+													<TextBlock Text="18"/>
+													<TextBlock Text="19"/>
+													<TextBlock Text="20"/>
+													<TextBlock Text="21"/>
+													<TextBlock Text="22"/>
+													<TextBlock Text="23"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_saturday_end_hour"
+														  Grid.Row="5"
+														  Grid.Column="5"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  ToolTip="Время начала занятия"
+														  Width="50"
+														  Padding="5"
+														  Margin="10 0 5 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="7"/>
+													<TextBlock Text="8"/>
+													<TextBlock Text="9"/>
+													<TextBlock Text="10"/>
+													<TextBlock Text="11"/>
+													<TextBlock Text="12"/>
+													<TextBlock Text="13"/>
+													<TextBlock Text="14"/>
+													<TextBlock Text="15"/>
+													<TextBlock Text="16"/>
+													<TextBlock Text="17"/>
+													<TextBlock Text="18"/>
+													<TextBlock Text="19"/>
+													<TextBlock Text="20"/>
+													<TextBlock Text="21"/>
+													<TextBlock Text="22"/>
+													<TextBlock Text="23"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_sunday_end_hour"
+														  Grid.Row="6"
+														  Grid.Column="5"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  ToolTip="Время начала занятия"
+														  Width="50"
+														  Padding="5"
+														  Margin="10 0 5 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="7"/>
+													<TextBlock Text="8"/>
+													<TextBlock Text="9"/>
+													<TextBlock Text="10"/>
+													<TextBlock Text="11"/>
+													<TextBlock Text="12"/>
+													<TextBlock Text="13"/>
+													<TextBlock Text="14"/>
+													<TextBlock Text="15"/>
+													<TextBlock Text="16"/>
+													<TextBlock Text="17"/>
+													<TextBlock Text="18"/>
+													<TextBlock Text="19"/>
+													<TextBlock Text="20"/>
+													<TextBlock Text="21"/>
+													<TextBlock Text="22"/>
+													<TextBlock Text="23"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_monday_end_min"
+														  Grid.Row="0"
+														  Grid.Column="6"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  Width="50"
+														  Padding="5"
+														  Margin="5 0 10 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="00"/>
+													<TextBlock Text="30"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_tuesday_end_min"
+														  Grid.Row="1"
+														  Grid.Column="6"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  Width="50"
+														  Padding="5"
+														  Margin="5 0 10 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="00"/>
+													<TextBlock Text="30"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_wednesday_end_min"
+														  Grid.Row="2"
+														  Grid.Column="6"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  Width="50"
+														  Padding="5"
+														  Margin="5 0 10 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="00"/>
+													<TextBlock Text="30"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_thursday_end_min"
+														  Grid.Row="3"
+														  Grid.Column="6"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  Width="50"
+														  Padding="5"
+														  Margin="5 0 10 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="00"/>
+													<TextBlock Text="30"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_friday_end_min"
+														  Grid.Row="4"
+														  Grid.Column="6"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  Width="50"
+														  Padding="5"
+														  Margin="5 0 10 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="00"/>
+													<TextBlock Text="30"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_saturday_end_min"
+														  Grid.Row="5"
+														  Grid.Column="6"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  Width="50"
+														  Padding="5"
+														  Margin="5 0 10 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="00"/>
+													<TextBlock Text="30"/>
+												</ComboBox>
+												<ComboBox x:Name="PR_sunday_end_min"
+														  Grid.Row="6"
+														  Grid.Column="6"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  Width="50"
+														  Padding="5"
+														  Margin="5 0 10 0"
+														  IsEnabled="False"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="00"/>
+													<TextBlock Text="30"/>
+												</ComboBox>
+											</Grid>
+										</Border>
+										<TextBlock Text="Предпочтительный корт"
+												   Grid.Row="1"
+												   Background="White"
+												   HorizontalAlignment="Left"
+												   VerticalAlignment="Top"
+												   FontStyle="Italic"
+												   Margin="10 0 10 0"
+												   Padding="5 0"/>
+										<Border CornerRadius="4"
+												Grid.Row="2"
+												Grid.RowSpan="2"
+												BorderBrush="Coral"
+												BorderThickness="1"
+												Margin="0 10 0 0"
+												VerticalAlignment="Top"
+												HorizontalAlignment="Left">
+											<StackPanel HorizontalAlignment="Center"
+														VerticalAlignment="Center">
+												<TextBox x:Name="PR_price"
+														 VerticalAlignment="Center"
+														 HorizontalAlignment="Left"
+														 Grid.Row="1"
+														 materialDesign:HintAssist.Background="White"
+														 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+														 materialDesign:HintAssist.Hint="Цена за час"
+														 Background="White"
+														 Width="150"
+														 Margin="10 10 10 13.75"
+														 PreviewTextInput="digital_PreviewTextInput"/>
+												<TextBlock Text="При согласовании" 
+														   FontStyle="Italic"
+														   HorizontalAlignment="Center"
+														   Height="15"/>
+												<TextBox x:Name="PR_sale"
+														 VerticalAlignment="Center"
+														 HorizontalAlignment="Left"
+														 Grid.Row="1"
+														 materialDesign:HintAssist.Background="White"
+														 Style="{StaticResource MaterialDesignOutlinedTextBox}"
+														 materialDesign:HintAssist.Hint="Скидка %"
+														 Background="White"
+														 Width="150"
+														 Margin="10 13.75 10 10"
+														 PreviewTextInput="digital_PreviewTextInput"/>
+											</StackPanel>
+										</Border>
+										<TextBlock Text="Цена"
+												   Grid.Row="2"
+												   Background="White"
+												   HorizontalAlignment="Left"
+												   VerticalAlignment="Top"
+												   FontStyle="Italic"
+												   Margin="10 1 10 0"
+												   Padding="5 0"/>
+										<Grid Grid.Row="0"
+											  Grid.RowSpan="4"
+											  Grid.Column="2"
+											  Margin="20 13 0 0">
+											<Grid.RowDefinitions>
+												<RowDefinition/>
+												<RowDefinition Height="75"/>
+											</Grid.RowDefinitions>
+											<Grid>
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition Width="180"/>
+													<ColumnDefinition/>
+												</Grid.ColumnDefinitions>
+												<StackPanel>
+													<TextBlock Text="Дней:"
+															   Margin="0 0 0 5"
+															   FontSize="16"/>
+													<TextBlock Text="Часов:"
+															   Margin="0 0 0 15"
+															   FontSize="16"/>
+													<TextBlock Text="Дата начала:"
+															   Margin="0 0 0 5"
+															   FontSize="16"/>
+													<TextBlock Text="Дата окончания:"
+															   Margin="0 0 0 15"
+															   FontSize="16"/>
+													<TextBlock Text="Корт:"
+															   Margin="0 0 0 15"
+															   FontSize="16"/>
+													<TextBlock Text="Цена:"
+															   Margin="0 0 0 5"
+															   FontSize="16"/>
+													<TextBlock Text="Скидка %:"
+															   Margin="0 0 0 15"
+															   FontSize="16"/>
+												</StackPanel>
+												<StackPanel Grid.Column="1"
+															HorizontalAlignment="Right">
+													<TextBlock x:Name="day_count"
+															   FontSize="16"
+															   Margin="0 0 0 5"
+															   FontStyle="Italic"
+															   HorizontalAlignment="Right"/>
+													<TextBlock x:Name="time_count"
+															   FontSize="16"
+															   Margin="0 0 0 15"
+															   FontStyle="Italic"
+															   HorizontalAlignment="Right"/>
+													<TextBlock Text="{Binding ElementName=PR_date_start, Path=Text}"
+															   Margin="0 0 0 5"
+															   FontSize="16"
+															   FontStyle="Italic"
+															   HorizontalAlignment="Right"/>
+													<TextBlock Text="{Binding ElementName=PR_date_end, Path=Text}"
+															   Margin="0 0 0 15"
+															   FontSize="16"
+															   FontStyle="Italic"
+															   HorizontalAlignment="Right"/>
+													<TextBlock Text="{Binding ElementName=PR_court, Path=Text}"
+															   Margin="0 0 0 15"
+															   FontSize="16"
+															   FontStyle="Italic"
+															   HorizontalAlignment="Right"/>
+													<TextBlock Text="{Binding ElementName=PR_price, Path=Text}"
+															   Margin="0 0 0 5"
+															   FontSize="16"
+															   FontStyle="Italic"
+															   HorizontalAlignment="Right"/>
+													<TextBlock Text="{Binding ElementName=PR_sale, Path=Text}"
+																   Margin="0 0 0 15"
+																   FontSize="16"
+																   FontStyle="Italic"
+																   HorizontalAlignment="Right"/>
+												</StackPanel>
+											</Grid>
+											<TextBlock Grid.Row="1"
+													   Text="Итого:"
+													   VerticalAlignment="Center"
+													   HorizontalAlignment="Left"
+													   FontWeight="Bold"
+													   FontSize="18"
+													   Foreground="Coral"/>
+											<TextBlock x:Name="PR_total_price"
+													   Grid.Row="1"
+													   VerticalAlignment="Center"
+													   HorizontalAlignment="Right"
+													   Text=""
+													   FontWeight="Bold"
+													   FontSize="18"
+													   FontStyle="Italic"
+													   Foreground="Coral"/>
+										</Grid>
+									</Grid>
+								</Grid>
+							</TabItem>
+						</TabControl>
+					</Grid>
+				</Grid>
+			</Border>
+		</materialDesign:DialogHost>		
 	</Grid>
 </Page>

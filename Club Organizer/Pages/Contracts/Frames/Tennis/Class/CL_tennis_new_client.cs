@@ -1,5 +1,6 @@
 ﻿using Club_Organizer.Window.Main.Class;
 using System;
+using System.Data;
 using System.Data.SQLite;
 using System.IO;
 
@@ -8,6 +9,35 @@ namespace Club_Organizer.Pages.Contracts.Frames.Tennis.Class
 	class CL_tennis_new_client
 	{
 		public static int id = 0;
+
+		public static bool error;
+
+		public static void client_check()
+		{
+			string db_path = Path.GetDirectoryName(System.Reflection.
+			Assembly.GetExecutingAssembly().Location) + @"\DB";
+
+			string conn = @"Data Source=" + db_path + "/clients.db;Version=3;";
+			string query = "SELECT * FROM clients_data WHERE fullname=@fullname AND Телефон=@phone";
+
+			SQLiteConnection db_conn = new SQLiteConnection(conn);
+			db_conn.Open();
+			SQLiteCommand cmd = new SQLiteCommand(query, db_conn);
+			cmd.Parameters.AddWithValue("@fullname", FR_tennis.fullname_text);
+			cmd.Parameters.AddWithValue("@phone", FR_tennis.phone_text);
+			SQLiteDataAdapter da = new SQLiteDataAdapter(cmd);
+			DataTable dt = new DataTable();
+			da.Fill(dt);
+
+			if (dt.Rows.Count > 0)
+			{
+				error = true;
+			}
+			else
+			{
+				new_client();
+			}
+		}
 
 		public static void new_client()
 		{
@@ -98,15 +128,29 @@ namespace Club_Organizer.Pages.Contracts.Frames.Tennis.Class
 				"id_client TEXT NOT NULL, " +
 				"Название TEXT NOT NULL, " +
 				"Тип TEXT NOT NULL, " +
-				"Дата TEXT NOT NULL, " +
-				"day TEXT NOT NULL, " +
 				"Начало TEXT NOT NULL, " +
 				"Конец TEXT NOT NULL, " +
+				"Корт TEXT NOT NULL, " +
+				"Дней TEXT NOT NULL, " +
 				"Часов TEXT NOT NULL, " +
 				"Корт TEXT NOT NULL, " +
 				"Цена TEXT NOT NULL, " +
 				"Скидка TEXT NOT NULL, " +
-				"Итого TEXT NOT NULL)";
+				"Итого TEXT NOT NULL, " +
+				"mon_start TEXT NOT NULL, " +
+				"mon_end TEXT NOT NULL, " +
+				"tue_start TEXT NOT NULL, " +
+				"tue_end TEXT NOT NULL, " +
+				"wed_start TEXT NOT NULL, " +
+				"wed_end TEXT NOT NULL, " +
+				"thr_start TEXT NOT NULL, " +
+				"thr_end TEXT NOT NULL, " +
+				"fr_start TEXT NOT NULL, " +
+				"fr_end TEXT NOT NULL, " +
+				"str_start TEXT NOT NULL, " +
+				"str_end TEXT NOT NULL, " +
+				"sun_start TEXT NOT NULL, " +
+				"sun_end TEXT NOT NULL)";
 
 			SQLiteConnection db_conn = new SQLiteConnection(conn);
 			db_conn.Open();

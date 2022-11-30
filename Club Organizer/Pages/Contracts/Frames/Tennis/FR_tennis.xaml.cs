@@ -28,6 +28,17 @@ namespace Club_Organizer.Pages.Contracts.Frames.Tennis
 		public static string email_text = "";
 		public static string birthday_text = "";
 
+		// Данные разового занятия \\
+		public static string OT_date_text = "";
+		public static string OT_hour_text = "";
+		public static string OT_minute_text = "";
+		public static string OT_total_hour_text = "";
+		public static string OT_court_text = "";
+		public static string OT_price_text = "";
+		public static string OT_sale_text = "";
+		public static string OT_total_price_text = "";
+		public static double OT_total_hour_doub = 0;
+
 		// Активация дней \\
 		public static bool? monday_check;
 		public static bool? tuesday_check;
@@ -111,22 +122,24 @@ namespace Club_Organizer.Pages.Contracts.Frames.Tennis
 			while (true)
 			{
 				await Task.Delay(1);
-				if (OT_price.Text != "" && OT_total_hour.Text != "")
+				if (OT_price.Text != "" && OT_time_start_hour.Text != "" &&
+					OT_time_start_min.Text != "" && OT_time_end_hour.Text != "" &&
+					OT_time_end_min.Text != "")
 				{
 					if (OT_sale.Text != "")
 					{
 						OT_total_price.Text = Convert.ToString(
 							Convert.ToInt32(OT_price.Text) *
-							Convert.ToInt32(OT_total_hour.Text) -
+							Convert.ToInt32(OT_total_hour_text) -
 							Convert.ToInt32(OT_price.Text) / 100 *
 							Convert.ToInt32(OT_sale.Text) *
-							Convert.ToInt32(OT_total_hour.Text));
+							Convert.ToInt32(OT_total_hour_text));
 					}
 					else
 					{
 						OT_total_price.Text = Convert.ToString(
 							Convert.ToInt32(OT_price.Text) *
-							Convert.ToInt32(OT_total_hour.Text));
+							Convert.ToInt32(OT_total_hour_text));
 					}
 				}
 			}
@@ -137,9 +150,56 @@ namespace Club_Organizer.Pages.Contracts.Frames.Tennis
 			while (true)
 			{
 				await Task.Delay(1);
-				if (OT_time_hour.Text != "" && OT_time_min.Text != "")
+
+				if (OT_time_start_hour.Text != "" &&
+					OT_time_start_min.Text != "" && OT_time_end_hour.Text != "" &&
+					OT_time_end_min.Text != "")
 				{
-					OT_time_text.Text = OT_time_hour.Text + ":" + OT_time_min.Text;
+					if ((OT_time_end_min.Text == "30" || OT_time_start_min.Text == "30")
+						|| (OT_time_end_min.Text == "30" && OT_time_start_min.Text == "30"))
+					{
+						if (OT_time_end_min.Text == "30" && OT_time_start_min.Text == "30")
+						{
+							OT_total_hour_doub = Convert.ToInt32(OT_time_end_hour.Text) -
+								Convert.ToInt32(OT_time_start_hour.Text);
+							OT_total_hour_text = OT_total_hour_doub.ToString();
+							OT_total_hour.Text = OT_total_hour_doub.ToString();
+						}
+						else if (OT_time_end_min.Text != "30" && OT_time_start_min.Text == "30")
+						{
+							OT_total_hour_doub = Convert.ToInt32(OT_time_end_hour.Text) -
+								Convert.ToInt32(OT_time_start_hour.Text) - 0.5;
+							OT_total_hour_text = OT_total_hour_doub.ToString();
+							OT_total_hour.Text = OT_total_hour_doub.ToString();
+						}
+						else
+						{
+							OT_total_hour_doub = Convert.ToInt32(OT_time_end_hour.Text) -
+								Convert.ToInt32(OT_time_start_hour.Text) + 0.5;
+							OT_total_hour_text = OT_total_hour_doub.ToString();
+							OT_total_hour.Text = OT_total_hour_doub.ToString();
+						}
+					}
+					else
+					{
+						OT_total_hour_doub = Convert.ToInt32(OT_time_end_hour.Text) -
+								Convert.ToInt32(OT_time_start_hour.Text);
+						OT_total_hour_text = OT_total_hour_doub.ToString();
+						OT_total_hour.Text = OT_total_hour_doub.ToString();
+					}
+				}
+				else
+				{
+					OT_total_hour.Text = "";
+				}
+
+				if (OT_time_start_hour.Text != "" && OT_time_start_min.Text != "")
+				{
+					OT_time_text.Text = OT_time_start_hour.Text + ":" + OT_time_start_min.Text;
+				}
+				else
+				{
+					OT_time_text.Text = "";
 				}
 			}
 		}
@@ -253,6 +313,10 @@ namespace Club_Organizer.Pages.Contracts.Frames.Tennis
 
 					day_count.Text = Convert.ToString(CL_count_day_of_week.total_days);
 				}
+				else
+				{
+					day_count.Text = "";
+				}
 			}
 		}
 
@@ -326,7 +390,7 @@ namespace Club_Organizer.Pages.Contracts.Frames.Tennis
 			}
 		}
 		// Создание нового клиента \\
-		private void CLT_write_Click(object sender, RoutedEventArgs e)
+		private async void CLT_write_Click(object sender, RoutedEventArgs e)
 		{
 			lastname_text = CLT_lastname.Text.Trim();
 			name_text = CLT_name.Text.Trim();
@@ -346,14 +410,46 @@ namespace Club_Organizer.Pages.Contracts.Frames.Tennis
 			email_text = CLT_email.Text.Trim();
 			birthday_text = CLT_birthday.Text.Trim();
 
-			CL_tennis_new_client.new_client();
+			if (lastname_text == "" || name_text == "" || secondname_text == "" ||
+				fullname_text == "" || passport_num_text == "" || passport_date_text == "" ||
+				passport_who_text == "" || city_text == "" || street_text == "" ||
+				house_text == "" || subhouse_text == "" || flat_text == "" ||
+				phone_text == "" || email_text == "" || birthday_text == "")
+			{
+				CT_error_dialog.IsOpen = true;
 
-			dt_clients_list = new DataTable();
+				error_text.Text = "Вы заполнили не все данные клиента";
 
-			CL_bind_combobox.BindComboBox(CLT_search);
-			CLT_search.ItemsSource = dt_clients_list.AsDataView();
-			CLT_search.DisplayMemberPath = "fullname";
-			CLT_search.SelectedValuePath = "id";
+				await Task.Delay(3000);
+
+				CT_error_dialog.IsOpen = false;
+			}
+			else
+			{
+				CL_tennis_new_client.client_check();
+
+				if (CL_tennis_new_client.error == true)
+				{
+					CT_error_dialog.IsOpen = true;
+
+					error_text.Text = "Такой клиент уже есть";
+
+					await Task.Delay(3000);
+
+					CT_error_dialog.IsOpen = false;
+
+					CL_tennis_new_client.error = false;
+				}
+				else
+				{
+					dt_clients_list = new DataTable();
+
+					CL_bind_combobox.BindComboBox(CLT_search);
+					CLT_search.ItemsSource = dt_clients_list.AsDataView();
+					CLT_search.DisplayMemberPath = "fullname";
+					CLT_search.SelectedValuePath = "id";
+				}
+			}
 		}
 		// Очитска данных клиента \\
 		private void CLT_clear_Click(object sender, RoutedEventArgs e)
@@ -376,12 +472,65 @@ namespace Club_Organizer.Pages.Contracts.Frames.Tennis
 		// Закрытие окна \\
 		private void CT_close_drawer_Click(object sender, RoutedEventArgs e)
 		{
-			close = true;
+			MainWindow.drawer_close();
         }
 		// Сохранение договора \\
-		private void CT_save_Click(object sender, RoutedEventArgs e)
+		private async void CT_save_Click(object sender, RoutedEventArgs e)
 		{
+			lastname_text = CLT_lastname.Text.Trim();
+			name_text = CLT_name.Text.Trim();
+			secondname_text = CLT_secondname.Text.Trim();
+			fullname_text = CLT_lastname.Text.Trim() + " " +
+				CLT_name.Text.Trim() + " " +
+				CLT_secondname.Text.Trim();
+			passport_num_text = CLT_passport_num.Text.Trim();
+			passport_date_text = CLT_passport_date.Text.Trim();
+			passport_who_text = CLT_passport_who.Text.Trim();
+			city_text = CLT_city.Text.Trim();
+			street_text = CLT_street.Text.Trim();
+			house_text = CLT_house.Text.Trim();
+			subhouse_text = CLT_subhouse.Text.Trim();
+			flat_text = CLT_flat.Text.Trim();
+			phone_text = CLT_phone.Text.Trim();
+			email_text = CLT_email.Text.Trim();
+			birthday_text = CLT_birthday.Text.Trim();
 
+			if (lastname_text == "" || name_text == "" || secondname_text == "" ||
+				fullname_text == "" || passport_num_text == "" || passport_date_text == "" ||
+				passport_who_text == "" || city_text == "" || street_text == "" ||
+				house_text == "" || subhouse_text == "" || flat_text == "" ||
+				phone_text == "" || email_text == "" || birthday_text == "")
+			{
+				CT_error_dialog.IsOpen = true;
+
+				error_text.Text = "Вы заполнили не все данные клиента";
+
+				await Task.Delay(3000);
+
+				CT_error_dialog.IsOpen = false;
+			}
+			else
+			{
+				if (OT.IsSelected == true)
+				{
+					if (OT_date.Text == "" || OT_time_start_hour.Text == "" || OT_time_start_min.Text == "" ||
+						OT_time_end_hour.Text == "" || OT_time_end_min.Text == "" || OT_court.Text == "" ||
+						OT_price.Text == "" || OT_sale.Text == "")
+					{
+						CT_error_dialog.IsOpen = true;
+
+						error_text.Text = "Вы заполнили не все данные разовой услуги";
+
+						await Task.Delay(3000);
+
+						CT_error_dialog.IsOpen = false;
+					}
+					else
+					{
+						CL_OT_contract_save.client_check();
+					}
+				}
+			}
 		}
 		// Распечатка договора \\
 		private void CT_print_Click(object sender, RoutedEventArgs e)
@@ -636,9 +785,10 @@ namespace Club_Organizer.Pages.Contracts.Frames.Tennis
 			else if (PR.IsSelected == true)
 			{
 				OT_date.Text = "";
-				OT_time_hour.Text = "";
-				OT_time_min.Text = "";
-				OT_total_hour.Text = "";
+				OT_time_start_hour.Text = "";
+				OT_time_start_min.Text = "";
+				OT_time_end_hour.Text = "";
+				OT_time_end_min.Text = "";
 				OT_court.Text = "";
 				OT_price.Text = "";
 				OT_sale.Text = "";

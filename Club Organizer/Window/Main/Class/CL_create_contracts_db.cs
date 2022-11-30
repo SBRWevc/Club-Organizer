@@ -1,15 +1,17 @@
 ﻿using System.Data.SQLite;
 using System.IO;
-using System.Windows;
+using System.Threading;
 
 namespace Club_Organizer.Window.Main.Class
 {
 	class CL_create_contracts_db
 	{
+		public static Thread contracts = new Thread(create_db);
+
 		static string db_path = Path.GetDirectoryName(System.Reflection.
 			Assembly.GetExecutingAssembly().Location) + @"\DB";
 		static string query_create = "CREATE TABLE IF NOT EXISTS contracts_data " +
-			"(id INTEGER NOT NULL PRIMARY KEY UNIQUE," +
+			"(id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE," +
 			"id_client INTEGER NOT NULL, " +
 			"Имя TEXT NOT NULL, " +
 			"id_service INTEGER NOT NULL, " +
@@ -18,21 +20,14 @@ namespace Club_Organizer.Window.Main.Class
 			"Начало TEXT NOT NULL, " +
 			"Окончание TEXT NOT NULL, " +
 			"Скидка TEXT NOT NULL, " +
-			"Сумма TEXT NOT NULL, " +
+			"Итого TEXT NOT NULL, " +
 			"Создан TEXT NOT NULL);";
 
 		// Создание базы пользователей \\
-		public static void create_db()
+		private static void create_db()
 		{
 			string? currentPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 			string path = currentPath + @"\DB";
-
-			// Создание пути \\
-			DirectoryInfo dirInfo = new DirectoryInfo(path);
-			if (!dirInfo.Exists)
-			{
-				dirInfo.Create();
-			}
 
 			// Создание файла \\
 			FileInfo fileInfo = new FileInfo(path + @"\contracts.db");
@@ -54,7 +49,7 @@ namespace Club_Organizer.Window.Main.Class
 		}
 
 		// Создание примитива таблицы договоров \\
-		public static void create_table()
+		private static void create_table()
 		{
 			string conn = @"Data Source=" + db_path + "/contracts.db;Version=3;";
 			SQLiteConnection db_conn = new SQLiteConnection(conn);

@@ -1,19 +1,25 @@
 ﻿using Club_Organizer.Pages.Auth;
 using Club_Organizer.Pages.Clients;
 using Club_Organizer.Pages.Contracts;
+using Club_Organizer.Pages.Contracts.Frames.Tennis;
 using Club_Organizer.Pages.Main;
 using Club_Organizer.Pages.Services;
 using Club_Organizer.Pages.Users;
 using Club_Organizer.Window.Main.Class;
 using System;
 using System.Linq;
+using System.Net;
+using System.Threading;
 using System.Windows;
 using System.Windows.Media.Imaging;
+
+
 
 namespace Club_Organizer
 {
 	public partial class MainWindow
 	{
+
 		public static string prof_login = "";
 		public static string prof_pass = "";
 		public static bool fast_contract_tennis;
@@ -24,6 +30,21 @@ namespace Club_Organizer
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			check_update();
+
+			Thread currentThread = Thread.CurrentThread;
+			currentThread.Name = "Club Organizer";
+
+			CL_create_dir.backup.IsBackground = true;
+			CL_create_dir.backup.Name = "Club Organizer Backup (dir)";
+			CL_create_dir.backup.Start();
+
+			CL_create_dir.db.IsBackground = true;
+			CL_create_dir.db.Name = "Club Organizer DB (dir)";
+			CL_create_dir.db.Start();
+
+			drawer_close();
 
 			frame_main.Navigate(new PG_auth());
 
@@ -51,7 +72,7 @@ namespace Club_Organizer
 
 			CL_userdata.clerdatauser();
 
-			CL_userdata.getdatauser();
+			CL_userdata.getdatauser();			
 
 			main.main_page.Visibility = Visibility.Visible;
 			main.contracts_menu.Visibility = Visibility.Visible;
@@ -101,6 +122,37 @@ namespace Club_Organizer
 			main.frame_main.Navigate(new PG_main());
 		}
 
+		// Обработчик Drawer \\
+		// Открытие \\
+		// Теннис \\
+		public static void drawer_open_tennis()
+		{
+			MainWindow? main = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+			main.frame_new_contract.Navigate(new FR_tennis());
+			main.add_contract_dialog.IsOpen = true;
+		}
+		// Бокс \\
+		public static void drawer_open_box()
+		{
+			MainWindow? main = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+			//main.frame_new_contract.Navigate(new FR_tennis());
+			main.add_contract_dialog.IsOpen = true;
+		}
+		// Карате \\
+		public static void drawer_open_karate()
+		{
+			MainWindow? main = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+			//main.frame_new_contract.Navigate(new FR_tennis());
+			main.add_contract_dialog.IsOpen = true;
+		}
+		// Закрытие \\
+		public static void drawer_close()
+		{
+			MainWindow? main = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+
+			main.add_contract_dialog.IsOpen = false;
+		}
+
 
 		// Страницы \\
 		// Главная \\
@@ -110,6 +162,8 @@ namespace Club_Organizer
 			{
 				profile_host.IsBottomDrawerOpen = false;
 			}
+
+			add_contract_dialog.IsOpen = false;
 
 			frame_main.Navigate(new PG_main());
 		}
@@ -140,10 +194,12 @@ namespace Club_Organizer
 			{
 				profile_host.IsBottomDrawerOpen = false;
 			}
+
+			add_contract_dialog.IsOpen = false;
 		}
 		
 		
-		// Drawer \\
+		// Host \\
 		// Кнопка профиля \\
 		private void profile_Click(object sender, RoutedEventArgs e)
 		{
@@ -199,13 +255,10 @@ namespace Club_Organizer
 				profile_host.IsBottomDrawerOpen = false;
 			}
 
-			fast_contract_tennis = true;
+			add_contract_dialog.IsOpen = false;
 
-			fast_contract_box = false;
-			fast_contract_gymnastic = false;
-			fast_contract_karate = false;
-
-			frame_main.Navigate(new PG_contracts());
+			frame_new_contract.Navigate(new FR_tennis());
+			add_contract_dialog.IsOpen = true;
 		}
 		// Вызов окна создания нового договора | Бокс \\
 		private void fastcontract_box_Click(object sender, RoutedEventArgs e)
@@ -215,11 +268,7 @@ namespace Club_Organizer
 				profile_host.IsBottomDrawerOpen = false;
 			}
 
-			fast_contract_box = true;
-
-			fast_contract_tennis = false;
-			fast_contract_gymnastic = false;
-			fast_contract_karate = false;
+			add_contract_dialog.IsOpen = false;
 		}
 		// Вызов окна создания нового договора | Гимнастика \\
 		private void fastcontract_gymnastic_Click(object sender, RoutedEventArgs e)
@@ -229,11 +278,7 @@ namespace Club_Organizer
 				profile_host.IsBottomDrawerOpen = false;
 			}
 
-			fast_contract_gymnastic = true;
-
-			fast_contract_tennis = false;
-			fast_contract_box = false;
-			fast_contract_karate = false;
+			add_contract_dialog.IsOpen = false;
 		}
 		// Вызов окна создания нового договора | Карате \\
 		private void fastcontract_karate_Click(object sender, RoutedEventArgs e)
@@ -243,11 +288,7 @@ namespace Club_Organizer
 				profile_host.IsBottomDrawerOpen = false;
 			}
 
-			fast_contract_karate = true;
-
-			fast_contract_tennis = false;
-			fast_contract_box = false;
-			fast_contract_gymnastic = false;
+			add_contract_dialog.IsOpen = false;
 		}
 		// Страница договоров \\
 		private void contracts_page_Click(object sender, RoutedEventArgs e)
@@ -256,6 +297,8 @@ namespace Club_Organizer
 			{
 				profile_host.IsBottomDrawerOpen = false;
 			}
+
+			add_contract_dialog.IsOpen = false;
 
 			frame_main.Navigate(new PG_contracts());
 		}
@@ -266,6 +309,8 @@ namespace Club_Organizer
 			{
 				profile_host.IsBottomDrawerOpen = false;
 			}
+
+			add_contract_dialog.IsOpen = false;
 
 			frame_main.Navigate(new PG_services());
 		}
@@ -279,6 +324,8 @@ namespace Club_Organizer
 				profile_host.IsBottomDrawerOpen = false;
 			}
 
+			add_contract_dialog.IsOpen = false;
+
 			frame_main.Navigate(new PG_clients());
 		}
 		// Страница черного списка \\
@@ -288,12 +335,16 @@ namespace Club_Organizer
 			{
 				profile_host.IsBottomDrawerOpen = false;
 			}
+
+			add_contract_dialog.IsOpen = false;
 		}
 
 		// Меню профиля \\
 		// Вызов окна профиля \\
 		private void profile_settings_Click(object sender, RoutedEventArgs e)
 		{
+			add_contract_dialog.IsOpen = false;
+
 			profile_host.IsBottomDrawerOpen = true;
 		}
 		// Страница пользователей \\
@@ -304,14 +355,20 @@ namespace Club_Organizer
 				profile_host.IsBottomDrawerOpen = false;
 			}
 
+			add_contract_dialog.IsOpen = false;
+
 			frame_main.Navigate(new PG_users());
 		}
 		// Восстановление бэкапа \\
 		private void recover_Click(object sender, RoutedEventArgs e)
 		{
-			CL_recover.recover_services();
-			CL_recover.recover_clients();
 			CL_recover.recover_users();
+
+			CL_recover.recover_clients();
+
+			CL_recover.recover_services();
+
+			CL_recover.recover_contracts();
 		}
 		// Выход из учётной записи \\
 		private void exit_Click(object sender, RoutedEventArgs e)
@@ -320,6 +377,8 @@ namespace Club_Organizer
 			{
 				profile_host.IsBottomDrawerOpen = false;
 			}
+
+			add_contract_dialog.IsOpen = false;
 
 			main_page.Visibility = Visibility.Collapsed;
 			contracts_menu.Visibility = Visibility.Collapsed;
@@ -338,22 +397,55 @@ namespace Club_Organizer
 
 
 		// Создание файлов \\
-		// Базы данных \\
+		// Создание диреторий \\
 		private void MetroWindow_Loaded(object sender, RoutedEventArgs e)
 		{
-			CL_create_users_db.create_db();
-			CL_create_clients_db.create_db();
-			CL_create_services_db.create_db();
-			CL_create_contracts_db.create_db();
+			CL_create_users_db.users.IsBackground = true;
+			CL_create_users_db.users.Name = "CO Create Users";
+			CL_create_users_db.users.Start();
+
+			CL_create_clients_db.clients.IsBackground = true;
+			CL_create_clients_db.clients.Name = "CO Create Clients";
+			CL_create_clients_db.clients.Start();
+
+			CL_create_services_db.services.IsBackground = true;
+			CL_create_services_db.services.Name = "CO Create Services";
+			CL_create_services_db.services.Start();
+
+			CL_create_contracts_db.contracts.IsBackground = true;
+			CL_create_contracts_db.contracts.Name = "CO Create Contracts";
+			CL_create_contracts_db.contracts.Start();
 		}
 		// Бэкапы \\
 		private void MetroWindow_Closed(object sender, EventArgs e)
 		{
-			CL_create_backup.create_backup_dir();
-			CL_create_backup.create_backup_services();
-			CL_create_backup.create_backup_clients();
-			CL_create_backup.create_backup_users();
-			CL_create_backup.create_backup_contracts();
+			CL_create_backup.service.IsBackground = true;
+			CL_create_backup.service.Name = "CO Backup Services";
+			CL_create_backup.service.Start();
+
+			CL_create_backup.clients.IsBackground = true;
+			CL_create_backup.clients.Name = "CO Backup Clients";
+			CL_create_backup.clients.Start();
+
+			CL_create_backup.users.IsBackground = true;
+			CL_create_backup.users.Name = "CO Backup Users";
+			CL_create_backup.users.Start();
+
+			CL_create_backup.contracts.IsBackground = true;
+			CL_create_backup.contracts.Name = "CO Backup Contracts";
+			CL_create_backup.contracts.Start();
+		}
+
+
+		// Проверка версии \\
+		private void check_update()
+		{
+			string app_version = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+			string server_version = "";
+			//WebClient web = new WebClient();
+			//server_version = web.DownloadString("Адрес к txt файлу");
+
+			MessageBox.Show(app_version);
 		}
 	}
 }

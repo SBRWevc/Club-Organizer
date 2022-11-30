@@ -13,7 +13,7 @@ namespace Club_Organizer.Pages.Contracts.Class
 			string conn = @"Data Source=" + db_path + "/contracts.db;Version=3;";
 			string query = "SELECT id, Имя," +
 				"Название, Тип, Начало, Окончание," +
-				"Скидка, Сумма, Создан FROM contracts_data";
+				"Скидка, Итого, Создан FROM contracts_data";
 
 			SQLiteConnection db_conn = new SQLiteConnection(conn);
 			db_conn.Open();

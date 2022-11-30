@@ -4,11 +4,14 @@ using System.Data;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 
 namespace Club_Organizer.Window.Main.Class
 {
     class CL_create_users_db
     {
+		public static Thread users = new Thread(create_db);
+
 		static string db_path = Path.GetDirectoryName(System.Reflection.
 			Assembly.GetExecutingAssembly().Location) + @"\DB";
 
@@ -31,18 +34,11 @@ namespace Club_Organizer.Window.Main.Class
 			"@secondname, @position, @gender, @root)";
 
 		// Создание базы пользователей \\
-		public static void create_db()
+		private static void create_db()
 		{
 			string? currentPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 			string path = currentPath + @"\DB";
-
-			// Создание пути \\
-			DirectoryInfo dirInfo = new DirectoryInfo(path);
-			if (!dirInfo.Exists)
-			{
-				dirInfo.Create();
-			}
-
+			
 			// Создание файла \\
 			FileInfo fileInfo = new FileInfo(path + @"\users.db");
 			try
@@ -63,7 +59,7 @@ namespace Club_Organizer.Window.Main.Class
 		}
 
 		// Создание примитива таблицы пользователей \\
-		public static void create_table()
+		private static void create_table()
 		{
 			string conn = @"Data Source=" + db_path + "/users.db;Version=3;";
 			SQLiteConnection db_conn = new SQLiteConnection(conn);

@@ -317,44 +317,58 @@
 								  Direction="270"/>
 			</Frame.Effect>
 		</Frame>
+		<materialDesign:DialogHost x:Name="add_contract_dialog"
+								   Placement="Center"
+								   HorizontalContentAlignment="Center"
+								   VerticalContentAlignment="Center"
+								   DialogTheme="Light" 
+								   CloseOnClickAway="True"
+								   DialogBackground="Transparent"
+								   materialDesign:DialogMargin="50">
+			<materialDesign:DialogHost.DialogContent>
+				<Frame x:Name="frame_new_contract"
+					   NavigationUIVisibility="Hidden"/>
+				
+			</materialDesign:DialogHost.DialogContent>
+		</materialDesign:DialogHost>
 		<materialDesign:DrawerHost x:Name="profile_host"
 								   BottomDrawerCornerRadius="8 8 0 0"
 								   BottomDrawerBackground="White">
-			<materialDesign:DrawerHost.Style>
-				<Style TargetType="materialDesign:DrawerHost"
+				<materialDesign:DrawerHost.Style>
+					<Style TargetType="materialDesign:DrawerHost"
 					   BasedOn="{StaticResource {x:Type materialDesign:DrawerHost}}">
-					<Style.Triggers>
-						<DataTrigger Binding="{Binding IsChecked, ElementName=BackgroundToggle}"
+						<Style.Triggers>
+							<DataTrigger Binding="{Binding IsChecked, ElementName=BackgroundToggle}"
 									 Value="True">
-							<Setter Property="OverlayBackground"
+								<Setter Property="OverlayBackground"
 									Value="{DynamicResource PrimaryHueMidBrush}" />
-						</DataTrigger>
-					</Style.Triggers>
-				</Style>
-			</materialDesign:DrawerHost.Style>
-			<materialDesign:DrawerHost.BottomDrawerContent>
-				<StackPanel Margin="16"
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</materialDesign:DrawerHost.Style>
+				<materialDesign:DrawerHost.BottomDrawerContent>
+					<StackPanel Margin="16"
 							HorizontalAlignment="Center"
 							VerticalAlignment="Center">
-					<Image x:Name="avatar"
+						<Image x:Name="avatar"
 						   Source="/res/avatar/man.png"
 						   RenderOptions.BitmapScalingMode="HighQuality"
 						   Width="150"
 						   Height="150"
 						   Margin="10"/>
-					<TextBlock x:Name="fullname"
+						<TextBlock x:Name="fullname"
 							   HorizontalAlignment="Center"
 							   Text="Имя пользователя - полное"
 							   FontWeight="Bold"
 							   FontSize="20"/>
-					<TextBlock x:Name="profile_position"
+						<TextBlock x:Name="profile_position"
 							   HorizontalAlignment="Center"
 							   Text="Должность"
 							   FontSize="12"
 							   FontStyle="Italic"/>
-					<StackPanel Margin="0 20 0 10"
+						<StackPanel Margin="0 20 0 10"
 								Orientation="Horizontal">
-						<TextBox x:Name="profile_login"
+							<TextBox x:Name="profile_login"
 								 Background="White"
 								 materialDesign:HintAssist.Background="White"
 								 Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -362,15 +376,15 @@
 								 MaxLength="15"
 								 Width="240"
 								 Margin="0 0 20 0"/>
-						<PasswordBox x:Name="profile_pass"
+							<PasswordBox x:Name="profile_pass"
 									 Background="White"
 									 materialDesign:HintAssist.Background="White"
 									 Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}"
 									 materialDesign:HintAssist.Hint="Введите новый пароль"
 									 Width="240"
 									 MaxLength="15"/>
-					</StackPanel>
-					<Button x:Name="profile_save_button"
+						</StackPanel>
+						<Button x:Name="profile_save_button"
 							HorizontalAlignment="Center"
 							Margin="0 20 0 0"
 							Background="White"
@@ -378,8 +392,8 @@
 							materialDesign:ElevationAssist.Elevation="Dp0"
 							Content="Сохранить"
 							Click="profile_save_button_Click"/>
-				</StackPanel>
-			</materialDesign:DrawerHost.BottomDrawerContent>
-		</materialDesign:DrawerHost>
+					</StackPanel>
+				</materialDesign:DrawerHost.BottomDrawerContent>
+			</materialDesign:DrawerHost>
 	</Grid>
 </mah:MetroWindow>

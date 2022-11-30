@@ -519,7 +519,7 @@
 											<StackPanel Orientation="Horizontal"
 														HorizontalAlignment="Center"
 														VerticalAlignment="Center">
-												<ComboBox x:Name="OT_time_hour"
+												<ComboBox x:Name="OT_time_start_hour"
 														  VerticalAlignment="Center"
 														  HorizontalAlignment="Left"
 														  materialDesign:HintAssist.Background="White"
@@ -547,7 +547,7 @@
 													<TextBlock Text="22"/>
 													<TextBlock Text="23"/>
 												</ComboBox>
-												<ComboBox x:Name="OT_time_min"
+												<ComboBox x:Name="OT_time_start_min"
 														  VerticalAlignment="Center"
 														  HorizontalAlignment="Left"
 														  materialDesign:HintAssist.Background="White"
@@ -555,21 +555,63 @@
 														  materialDesign:HintAssist.Hint="Мин"
 														  Background="White"
 														  Width="87.5"
-														  Margin="0 10 25 10"
+														  Margin="0 10 0 10"
 														  PreviewTextInput="digital_PreviewTextInput">
 													<TextBlock Text="00"/>
 													<TextBlock Text="30"/>
 												</ComboBox>
-												<TextBox x:Name="OT_total_hour"
-														 VerticalAlignment="Center"
-														 HorizontalAlignment="Left"
-														 materialDesign:HintAssist.Background="White"
-														 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-														 materialDesign:HintAssist.Hint="Время занятия"
-														 Background="White"
-														 Width="200"
-														 Margin="0 10 10 10" 
-														 PreviewTextInput="digital_PreviewTextInput"/>
+												<Path Grid.Column="1" 
+													  Data="M720,60 L720,150"
+													  Fill="#FFF4F4F5" 
+													  HorizontalAlignment="Center" 
+													  Height="50" 
+													  Grid.Row="2" 
+													  Stroke="Black" 
+													  Stretch="Fill" 
+													  VerticalAlignment="Center" 
+													  Width="1"
+													  Margin="12.5 0"/>
+												<ComboBox x:Name="OT_time_end_hour"
+														  VerticalAlignment="Center"
+														  HorizontalAlignment="Left"
+														  materialDesign:HintAssist.Background="White"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  materialDesign:HintAssist.Hint="Час"
+														  Background="White"
+														  Width="87.5"
+														  Margin="0 10 25 10"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="07"/>
+													<TextBlock Text="08"/>
+													<TextBlock Text="09"/>
+													<TextBlock Text="10"/>
+													<TextBlock Text="11"/>
+													<TextBlock Text="12"/>
+													<TextBlock Text="13"/>
+													<TextBlock Text="14"/>
+													<TextBlock Text="15"/>
+													<TextBlock Text="16"/>
+													<TextBlock Text="17"/>
+													<TextBlock Text="18"/>
+													<TextBlock Text="19"/>
+													<TextBlock Text="20"/>
+													<TextBlock Text="21"/>
+													<TextBlock Text="22"/>
+													<TextBlock Text="23"/>
+												</ComboBox>
+												<ComboBox x:Name="OT_time_end_min"
+														  VerticalAlignment="Center"
+														  HorizontalAlignment="Left"
+														  materialDesign:HintAssist.Background="White"
+														  Style="{StaticResource MaterialDesignOutlinedComboBox}"
+														  materialDesign:HintAssist.Hint="Мин"
+														  Background="White"
+														  Width="87.5"
+														  Margin="0 10 10 10"
+														  PreviewTextInput="digital_PreviewTextInput">
+													<TextBlock Text="00"/>
+													<TextBlock Text="30"/>
+												</ComboBox>
 											</StackPanel>
 										</Border>
 										<TextBlock Text="Время"
@@ -701,7 +743,7 @@
 															   FontSize="16"
 															   FontStyle="Italic"
 															   HorizontalAlignment="Right"/>
-													<TextBlock Text="{Binding ElementName=OT_total_hour, Path=Text}"
+													<TextBlock x:Name="OT_total_hour"
 															   Margin="0 0 0 15"
 															   FontSize="16"
 															   FontStyle="Italic"
@@ -905,7 +947,7 @@
 													  Height="264.5" 
 													  Grid.Row="0" 
 													  Grid.RowSpan="7"
-													  Stroke="Coral" 
+													  Stroke="Black" 
 													  Stretch="Fill" 
 													  VerticalAlignment="Center" 
 													  Width="1"/>
@@ -1196,7 +1238,7 @@
 													  Height="264.5" 
 													  Grid.Row="0" 
 													  Grid.RowSpan="7"
-													  Stroke="Coral" 
+													  Stroke="Black" 
 													  Stretch="Fill" 
 													  VerticalAlignment="Center" 
 													  Width="1"/>

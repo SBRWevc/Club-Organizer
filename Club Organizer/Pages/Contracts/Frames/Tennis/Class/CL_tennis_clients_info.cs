@@ -37,8 +37,7 @@ namespace Club_Organizer.Pages.Contracts.Frames.Tennis.Class
 			SQLiteConnection db_conn = new SQLiteConnection(conn);
 			db_conn.Open();
 			SQLiteCommand cmd = new SQLiteCommand(query, db_conn);
-			cmd.Parameters.AddWithValue("@fullname",
-				FR_tennis.fullname);
+			cmd.Parameters.AddWithValue("@fullname", FR_tennis.fullname);
 			SQLiteDataReader dr = null;
 			dr = cmd.ExecuteReader();
 

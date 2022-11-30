@@ -1,27 +1,18 @@
 ﻿using System;
 using System.IO;
-using System.Windows;
+using System.Threading;
 
 namespace Club_Organizer.Window.Main.Class
 {
     class CL_create_backup
     {
-		// Создание пути бэкапа \\
-		public static void create_backup_dir()
-		{
-			string doc = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
-			string path_new = doc + @"\Ладога\Backup";
-
-			// Создание пути \\
-			DirectoryInfo dirInfo = new DirectoryInfo(path_new);
-			if (!dirInfo.Exists)
-			{
-				dirInfo.Create();
-			}	
-		}
+		public static Thread service = new Thread(create_backup_services);
+		public static Thread clients = new Thread(create_backup_clients);
+		public static Thread users = new Thread(create_backup_users);
+		public static Thread contracts = new Thread(create_backup_contracts);		
 
 		// Создание бэкапа услуг \\
-		public static void create_backup_services()
+		private static void create_backup_services()
 		{
 			string doc = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			string path_new = doc + @"\Ладога\Backup";
@@ -39,7 +30,7 @@ namespace Club_Organizer.Window.Main.Class
 		}
 
 		// Создание бэкапа клиентов \\
-		public static void create_backup_clients()
+		private static void create_backup_clients()
 		{
 			string doc = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			string path_new = doc + @"\Ладога\Backup";
@@ -56,7 +47,7 @@ namespace Club_Organizer.Window.Main.Class
 		}
 
 		// Создание бэкапа пользователей \\
-		public static void create_backup_users()
+		private static void create_backup_users()
 		{
 			string doc = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			string path_new = doc + @"\Ладога\Backup";
@@ -73,7 +64,7 @@ namespace Club_Organizer.Window.Main.Class
 		}
 
 		// Создание бэкапа договоров \\
-		public static void create_backup_contracts()
+		private static void create_backup_contracts()
 		{
 			string doc = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 			string path_new = doc + @"\Ладога\Backup";
